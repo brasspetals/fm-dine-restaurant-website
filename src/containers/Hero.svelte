@@ -31,7 +31,7 @@
   .hero__logo {
     height: 2rem;
     width: auto;
-    margin-bottom: 2rem;
+    margin-bottom: 1.6875rem;
   }
 
   .hero__content {
@@ -39,7 +39,33 @@
     justify-items: center;
   }
 
+  h1 { 
+    max-width: 10ch;
+  }
+
   p {
     padding: 1.5rem 0 2rem;
+    max-width: 36ch;
+  }
+
+  @media (min-width: 37.5rem) {
+    .hero {
+      background-image: -webkit-image-set(
+        url("/images/homepage/hero-bg-tablet.jpg") 1x,
+        url("/images/homepage/hero-bg-tablet@2x.jpg") 2x);
+      background-image: image-set(
+        url("/images/homepage/hero-bg-tablet.jpg") 1x,
+        url("/images/homepage/hero-bg-tablet@2x.jpg") 2x);
+      background-size: cover;
+      padding: 23.375rem 1.5rem 13.5rem;
+    }
+
+    .hero__logo {
+      height: 2.5rem;
+    }
+
+    p { 
+      padding: 1.5rem 0;
+    }
   }
 </style>

@@ -5,5 +5,4 @@
 <Hero/>
 
 <style>
-
 </style>
