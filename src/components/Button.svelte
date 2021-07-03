@@ -1,6 +1,4 @@
-<script>
-
-</script>
+<script></script>
 
 <a href="/" class="button">Book a table</a>
 
