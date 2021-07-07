@@ -15,7 +15,7 @@
     }
   }
 
-  @media (min-width: 53.125rem) {
+  @media (min-width: 950px) {
     .logo {
       margin: 0.0625rem 0.1875rem 9.25rem;
     }

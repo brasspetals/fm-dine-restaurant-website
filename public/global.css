@@ -36,7 +36,7 @@ h1 {
   }
 }
 
-@media (min-width: 53.125rem) { 
+@media (min-width: 950px) { 
   h1 {
     font-size: 4rem;
     line-height: 1.125;
