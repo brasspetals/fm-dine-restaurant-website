@@ -63,10 +63,11 @@
 
     p { 
       padding: 1.5rem 0;
+      max-width: 36ch;
     }
   }
 
-  @media (min-width: 950px) {
+  @media (min-width: 1000px) {
     .hero {
       background-image: -webkit-image-set(
         url("/images/homepage/hero-bg-desktop.jpg") 1x,
