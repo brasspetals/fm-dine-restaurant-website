@@ -34,6 +34,7 @@
     max-width: 69.4375rem;
     gap: 48px;
     margin-bottom: 80px;
+
   }
 
   .about__img {
@@ -44,7 +45,6 @@
 
   img { 
     display: block;
-    /* width: 100%; */
     position: relative;
     z-index: 1;
     box-shadow: 0rem 3rem 5rem -50px rgba(0, 0, 0, .75);
@@ -97,9 +97,8 @@
 
     .about__content {
       grid-auto-flow: column;
-      /* grid-template-columns: 50% 1fr; */
-      /* gap: 125px; */
       justify-content: space-between;
+      grid-template-columns: minmax(40%, max-content) auto;
     }
 
     .top {
@@ -117,15 +116,16 @@
     }
 
     .about__text {
-      padding-top: 177px;
       align-content:start;
       justify-items: left;
       text-align: left;
       max-width: 33ch;
+      align-self: center;
+      margin-top: -5.5%;
     }
 
-    p {
-      /* max-width: 33ch; */
+    h2 {
+      min-width: 9ch;
     }
 
     svg {
