@@ -1,6 +1,6 @@
 <script>
-	import Hero from './containers/Hero.svelte'
-	import About from './components/About.svelte'
+	import Hero from './components/home/Hero.svelte'
+	import About from './components/home/About.svelte'
 </script>
 
 <Hero/>

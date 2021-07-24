@@ -1,6 +1,6 @@
 <script>
-  import Button from '../components/Button.svelte';
-  import Logo from '../components/Logo.svelte';
+  import Button from '../shared/Button.svelte';
+  import Logo from '../shared/Logo.svelte';
 </script>
 
 <header class="hero">
