@@ -67,7 +67,7 @@
     }
   }
 
-  @media (min-width: 1000px) {
+  @media (min-width: 1050px) {
     .hero {
       background-image: -webkit-image-set(
         url("/images/homepage/hero-bg-desktop.jpg") 1x,
