@@ -16,12 +16,12 @@
     line-height: 1.143;
     letter-spacing: 2px;
     text-transform: uppercase;
-    transition: all .5s ease;
+    transition: background-color .5s ease, color .5s ease;
   } 
 
   .button:hover {
     color: var(--color-soft-black);
     background-color: var(--color-white);
-    transition: all .5s ease;
+    transition: background-color .5s ease, color .5s ease;
   }
 </style>

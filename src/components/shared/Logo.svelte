@@ -6,7 +6,6 @@
   .logo {
     height: 2rem;
     width: auto;
-    margin-bottom: 1.6875rem;
   }
 
   @media (min-width: 37.5rem) {
@@ -17,7 +16,7 @@
 
   @media (min-width: 1150px) {
     .logo {
-      margin: 0.0625rem 0.1875rem 9.25rem;
+      margin: 0.0625rem 0.1875rem 0;
     }
   }
 </style>

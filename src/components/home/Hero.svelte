@@ -39,6 +39,7 @@
   .hero__text {
     display: grid;
     justify-items: center;
+    padding-top: 1.6875rem;
   }
 
   h1 { 
@@ -84,10 +85,12 @@
 
     .hero__text {
       justify-items: left;
+      padding-top: 9.25rem;
     }
 
     p {
       padding: 1.5rem 0 2.625rem;
+      max-width: 30ch;
     }
   }
 </style>
