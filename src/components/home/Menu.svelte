@@ -48,4 +48,15 @@
   p {
     max-width: 30ch;
   }
+
+
+  @media (min-width: 37.5rem) {
+    .menu {
+      padding: 96px 2rem;
+    }
+
+    .menu__content {
+      gap: 56px;
+    }
+  }
 </style>
