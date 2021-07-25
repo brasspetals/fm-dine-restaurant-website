@@ -95,4 +95,10 @@
       max-width: 28ch;
     }
   }
+
+  @media (min-width: 1150px) { 
+    .menu__list {
+      padding: 55px 0;
+    }
+  }
 </style>

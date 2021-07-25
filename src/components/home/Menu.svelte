@@ -59,4 +59,30 @@
       gap: 56px;
     }
   }
+
+  @media (min-width: 1150px) { 
+    .menu {
+      padding: 201px 4rem 65px;
+      margin-top: -200px;
+    }
+
+    .menu__content {
+      grid-auto-flow: column;
+      justify-content: space-between;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .menu__heading {
+      justify-items: start;
+      align-content: start;
+      text-align: left;
+      width: 100%;
+    }
+
+    svg {
+      margin-bottom: 48px;
+    }
+
+  }
 </style>

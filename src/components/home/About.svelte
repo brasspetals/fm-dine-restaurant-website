@@ -4,7 +4,7 @@
   <div class="about__content">
     <div class="about__img">
       <picture>
-        <source media="(min-width: 1050px)" srcset="./images/homepage/enjoyable-place-desktop.jpg, ./images/homepage/enjoyable-place-desktop@2x.jpg 2x">
+        <source media="(min-width: 1150px)" srcset="./images/homepage/enjoyable-place-desktop.jpg, ./images/homepage/enjoyable-place-desktop@2x.jpg 2x">
         <source media="(min-width: 37.5rem)" srcset="./images/homepage/enjoyable-place-tablet.jpg, ./images/homepage/enjoyable-place-tablet@2x.jpg 2x">
         <img class="top" srcset="./images/homepage/enjoyable-place-mobile.jpg, ./images/homepage/enjoyable-place-mobile@2x.jpg 2x" alt="">
       </picture>
@@ -18,7 +18,7 @@
   <div class="about__content even">
     <div class="about__img">
       <picture>
-        <source media="(min-width: 1050px)" srcset="./images/homepage/locally-sourced-desktop.jpg, ./images/homepage/locally-sourced-desktop@2x.jpg 2x">
+        <source media="(min-width: 1150px)" srcset="./images/homepage/locally-sourced-desktop.jpg, ./images/homepage/locally-sourced-desktop@2x.jpg 2x">
         <source media="(min-width: 37.5rem)" srcset="./images/homepage/locally-sourced-tablet.jpg, ./images/homepage/locally-sourced-tablet@2x.jpg 2x">
         <img srcset="./images/homepage/locally-sourced-mobile.jpg, ./images/homepage/locally-sourced-mobile@2x.jpg 2x" alt="">
       </picture>
@@ -128,7 +128,7 @@
     }
   }
 
-  @media (min-width: 1050px) {
+  @media (min-width: 1150px) {
     .about {
       padding: 0 4rem;
     }
