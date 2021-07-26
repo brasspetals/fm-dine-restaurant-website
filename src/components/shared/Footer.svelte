@@ -7,12 +7,12 @@
       <address>
         <p>Marthwaite, Sedbergh</p>
         <p>Cumbria</p>
-        <a href="tel:+00 44 123 4567">+00 44 123 4567</a> 
+        <a href="tel:+00 44 123 4567" class="tel">+00 44 123 4567</a> 
       </address>
       <div class="hours">
         <p>Open Times</p>
-        <p>Mon - Fri: 09:00 AM - 10:00 PM</p>
-        <p>Sat - Sun: 09:00 AM - 11:30 PM</p>
+        <p>Mon - Fri: <span>09:00 AM - 10:00 PM</span></p>
+        <p>Sat - Sun: <span>09:00 AM - 11:30 PM</span></p>
       </div>
     </div>
   </div>
@@ -42,13 +42,19 @@
     text-align: center;
   }
 
-  address, p, a {
+  address, p, .tel {
     font-style: normal;
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 2;
     letter-spacing: 2px;
     text-transform: uppercase;
+  }
+
+  @media (max-width: 365px) {
+    span {
+      display: block;
+    }
   }
 
   @media (min-width: 650px) { 
@@ -60,6 +66,10 @@
       grid-auto-flow: column;
       justify-content: start;
       gap: 130px;
+    }
+
+    .footer-content > a {
+      align-self: start;
     }
 
     .footer__text {
