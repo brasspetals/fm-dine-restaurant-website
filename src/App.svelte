@@ -2,17 +2,19 @@
 	import Hero from './components/home/Hero.svelte'
 	import About from './components/home/About.svelte'
 	import Menu from './components/home/Menu.svelte'
+	import CTA from './components/home/CTA.svelte'
 </script>
 
 <Hero/>
 <About/>
 <Menu/>
 <div class="break"></div>
+<CTA/>
 
 <style>
 	.break {
 		background-color: white;
-		height: 500px;
+		height: 1044px;
 		width: 100%;
 	}
 </style>

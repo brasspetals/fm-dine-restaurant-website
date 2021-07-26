@@ -183,8 +183,6 @@
       justify-items: left;
       text-align: left;
       max-width: 33ch;
-      /* align-self: center;
-      margin-top: -5.5%; */
       margin-top: 39.5%;
     }
 
