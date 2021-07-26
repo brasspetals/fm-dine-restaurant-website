@@ -96,7 +96,7 @@
     }
   }
 
-  @media (min-width: 1150px) { 
+  @media (min-width: 1050px) { 
     .menu__list {
       padding: 55px 0;
     }

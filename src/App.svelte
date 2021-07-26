@@ -3,6 +3,7 @@
 	import About from './components/home/About.svelte'
 	import Menu from './components/home/Menu.svelte'
 	import CTA from './components/home/CTA.svelte'
+	import Footer from './components/shared/Footer.svelte'
 </script>
 
 <Hero/>
@@ -10,6 +11,7 @@
 <Menu/>
 <div class="break"></div>
 <CTA/>
+<Footer/>
 
 <style>
 	.break {

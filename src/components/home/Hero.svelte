@@ -1,11 +1,10 @@
 <script>
   import Button from '../shared/Button.svelte';
-  import Logo from '../shared/Logo.svelte';
 </script>
 
 <header class="hero">
   <div class="hero__content">
-    <Logo/>
+    <a href="/"><img class="logo" src="./images/logo.svg/" alt="Dine - Home"></a>
     <div class="hero__text">
       <h1>Exquisite dining since 1989</h1>
       <p>Experience our seasonal menu in beautiful country surroundings. Eat the freshest produce from the comfort of our farmhouse.</p>
@@ -36,6 +35,11 @@
     max-width: 69.4375rem;
   }
 
+  .logo {
+    height: 2rem;
+    width: auto;
+  }
+
   .hero__text {
     display: grid;
     justify-items: center;
@@ -49,6 +53,12 @@
   p {
     padding: 1.5rem 0 2rem;
     max-width: 30ch;
+  }
+
+  @media (min-width: 37.5rem) {
+    .logo {
+      height: 2.5rem;
+    }
   }
 
   @media (min-width: 45.5rem) {
@@ -68,7 +78,7 @@
     }
   }
 
-  @media (min-width: 1150px) {
+  @media (min-width: 1050px) {
     .hero {
       background-image: -webkit-image-set(
         url("/images/homepage/hero-bg-desktop.jpg") 1x,
@@ -81,6 +91,10 @@
       display: grid;
       justify-items: center;
       min-height: 51.25rem;
+    }
+
+    .logo {
+      margin: 0.0625rem 0.1875rem 0;
     }
 
     .hero__text {

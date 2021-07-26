@@ -60,12 +60,14 @@
     }
   }
 
-  @media (min-width: 1150px) { 
+  @media (min-width: 1050px) { 
     .menu {
       padding: 201px 4rem 65px;
       margin-top: -200px;
     }
+  }
 
+  @media (min-width:1150px) {   
     .menu__content {
       grid-auto-flow: column;
       justify-content: space-between;
@@ -83,6 +85,5 @@
     svg {
       margin-bottom: 48px;
     }
-
   }
 </style>

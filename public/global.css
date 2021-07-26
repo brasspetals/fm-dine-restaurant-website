@@ -37,7 +37,7 @@ h1 {
   }
 }
 
-@media (min-width: 1150px) { 
+@media (min-width: 1050px) { 
   h1 {
     font-size: 4rem;
     line-height: 1.125;
@@ -92,6 +92,10 @@ p {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+address {
+  font-style: normal;
 }
 
 :focus-visible {
