@@ -51,6 +51,14 @@
     text-transform: uppercase;
   }
 
+  .tel {
+    transition: color .5s ease;
+  }
+
+  .tel:hover {
+    color: var(--color-brown);
+  }
+
   @media (max-width: 365px) {
     span {
       display: block;
