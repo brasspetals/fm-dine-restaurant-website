@@ -1,10 +1,11 @@
 <script>
+  import Logo from '../shared/Logo.svelte'
   import Button from '../shared/Button.svelte';
 </script>
 
 <header class="hero">
   <div class="hero__content">
-    <a href="/"><img class="logo" src="./images/logo.svg/" alt="Dine - Home"></a>
+    <Logo/>
     <div class="hero__text">
       <h1>Exquisite dining since 1989</h1>
       <p>Experience our seasonal menu in beautiful country surroundings. Eat the freshest produce from the comfort of our farmhouse.</p>
@@ -32,18 +33,13 @@
 
   .hero__content {
     width: 100%;
-    max-width: 69.4375rem;
-  }
-
-  .logo {
-    height: 2rem;
-    width: auto;
+    max-width: 69.375rem;
   }
 
   .hero__text {
     display: grid;
     justify-items: center;
-    padding-top: 1.6875rem;
+    padding-top: 2rem;
   }
 
   h1 { 
@@ -56,12 +52,6 @@
   }
 
   @media (min-width: 37.5rem) {
-    .logo {
-      height: 2.5rem;
-    }
-  }
-
-  @media (min-width: 45.5rem) {
     .hero {
       background-image: -webkit-image-set(
         url("/images/homepage/hero-bg-tablet.jpg") 1x,
@@ -69,7 +59,7 @@
       background-image: image-set(
         url("/images/homepage/hero-bg-tablet.jpg") 1x,
         url("/images/homepage/hero-bg-tablet@2x.jpg") 2x);
-      padding: max(23.375rem, 48.7%) 1.5rem 13.5rem;
+      padding: max(374px, 48.7%) 1.5rem 13.5rem;
     }
 
     p { 
@@ -78,7 +68,7 @@
     }
   }
 
-  @media (min-width: 1050px) {
+  @media (min-width: 65.625rem) {
     .hero {
       background-image: -webkit-image-set(
         url("/images/homepage/hero-bg-desktop.jpg") 1x,
@@ -86,20 +76,16 @@
       background-image: image-set(
         url("/images/homepage/hero-bg-desktop.jpg") 1x,
         url("/images/homepage/hero-bg-desktop@2x.jpg") 2x);
-      padding: 4rem;
+      padding: 4.0625rem 4rem 4rem;
       text-align: left;
       display: grid;
       justify-items: center;
       min-height: 51.25rem;
     }
 
-    .logo {
-      margin: 0.0625rem 0.1875rem 0;
-    }
-
     .hero__text {
       justify-items: left;
-      padding-top: 9.25rem;
+      padding-top: 9.5rem;
     }
 
     p {

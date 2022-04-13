@@ -1,9 +1,12 @@
-<script></script>
+<script>
+  export let black = false;
+  export let reservation = false;
+</script>
 
-<a href="/" class="button">Book a table</a>
+<a href="/" class:black={black} class:reservation={reservation}>Book a table</a>
 
 <style>
-  .button {
+  a {
     display: grid;
     justify-content: center;
     align-items: center;
@@ -19,7 +22,17 @@
     transition: background-color .5s ease, color .5s ease;
   } 
 
-  .button:hover {
+  .black {
+    background-color: var(--color-soft-black);
+    border: 1px solid var(--color-soft-black);
+    color: var(--color-white);
+  }
+
+  .reservation {
+    width: 100%;
+  }
+
+  a:hover {
     color: var(--color-soft-black);
     background-color: var(--color-white);
     transition: background-color .5s ease, color .5s ease;

@@ -4,13 +4,13 @@
   <div class="about__content">
     <div class="about__img">
       <picture>
-        <source media="(min-width: 1050px)" srcset="./images/homepage/enjoyable-place-desktop.jpg, ./images/homepage/enjoyable-place-desktop@2x.jpg 2x">
+        <source media="(min-width: 65.625rem)" srcset="./images/homepage/enjoyable-place-desktop.jpg, ./images/homepage/enjoyable-place-desktop@2x.jpg 2x">
         <source media="(min-width: 37.5rem)" srcset="./images/homepage/enjoyable-place-tablet.jpg, ./images/homepage/enjoyable-place-tablet@2x.jpg 2x">
         <img class="top" srcset="./images/homepage/enjoyable-place-mobile.jpg, ./images/homepage/enjoyable-place-mobile@2x.jpg 2x" alt="">
       </picture>
     </div>
     <div class="about__text">
-      <svg xmlns="http://www.w3.org/2000/svg" width="71" height="7"><g fill="none" fill-rule="evenodd"><path fill="#9E7F66" d="M15 3h56v1H15z"/><circle cx="3.5" cy="3.5" r="3" stroke="#9E7F66"/></g></svg>
+      <img src="/images/patterns/pattern-divide.svg" alt="">
       <h2>Enjoyable place for all the family</h2>
       <p>Our relaxed surroundings make dining with us a great experience for everyone. We can even arrange a tour of the farm before your meal.</p>
     </div>
@@ -18,13 +18,13 @@
   <div class="about__content even">
     <div class="about__img">
       <picture>
-        <source media="(min-width: 1050px)" srcset="./images/homepage/locally-sourced-desktop.jpg, ./images/homepage/locally-sourced-desktop@2x.jpg 2x">
+        <source media="(min-width: 65.625rem)" srcset="./images/homepage/locally-sourced-desktop.jpg, ./images/homepage/locally-sourced-desktop@2x.jpg 2x">
         <source media="(min-width: 37.5rem)" srcset="./images/homepage/locally-sourced-tablet.jpg, ./images/homepage/locally-sourced-tablet@2x.jpg 2x">
         <img srcset="./images/homepage/locally-sourced-mobile.jpg, ./images/homepage/locally-sourced-mobile@2x.jpg 2x" alt="">
       </picture>
     </div>
     <div class="about__text">
-      <svg xmlns="http://www.w3.org/2000/svg" width="71" height="7"><g fill="none" fill-rule="evenodd"><path fill="#9E7F66" d="M15 3h56v1H15z"/><circle cx="3.5" cy="3.5" r="3" stroke="#9E7F66"/></g></svg>
+      <img src="/images/patterns/pattern-divide.svg" alt="">
       <h2>The most locally sourced food</h2>
       <p>All our ingredients come directly from our farm or local fishery. So you can be sure that you’re eating the freshest, most sustainable food.</p>
     </div>
@@ -44,8 +44,8 @@
     justify-items: center;
     width: 100%;
     max-width: 69.4375rem;
-    gap: 48px;
-    padding-bottom: 80px;
+    gap: 3rem;
+    padding-bottom: 5rem;
   }
 
   .about__img {
@@ -54,16 +54,15 @@
     justify-content: center;
   }
 
-  img { 
-    display: block;
+  .about__img img { 
     position: relative;
     z-index: 1;
-    box-shadow: 0rem 3rem 5rem -50px rgba(0, 0, 0, .75);
+    box-shadow: 0rem 3rem 5rem -3.125rem rgba(0, 0, 0, .75);
     max-width: 100%;
   }
 
   .top {
-    margin-top: -72px;
+    margin-top: -4.5rem;
   }
 
   .about__text {
@@ -72,8 +71,8 @@
     text-align: center;
   }
 
-  svg {
-    margin-bottom: 32px;
+  .about__text img {
+    margin-bottom: 2rem;
   }
 
   h2 {
@@ -100,21 +99,19 @@
     .about::after {
       content: url("/images/patterns/pattern-curve-top-left.svg");
       position: absolute;
-      bottom: -5px;
+      bottom: -0.3125rem;
       left: 50%;
     }
 
     .about__content {
-      gap: 56px;
-      padding-bottom: 120px;
+      gap: 3.5rem;
+      padding-bottom: 7.5rem;
     }
 
     .top {
-      margin-top: -96px;
+      margin-top: -6rem;
     }
-  }
 
-  @media (min-width: 740px) {
     .even * picture {
       position: relative;
     }
@@ -122,25 +119,25 @@
     .even * picture::after {
       content: url("/images/patterns/pattern-lines.svg");
       position: absolute;
-      top: 228px;
-      right: -58px;
+      top: 14.25rem;
+      right: -3.625rem;
       z-index: 1;
     }
   }
 
-  @media (min-width: 1050px) {
+  @media (min-width: 65.625rem) {
     .about {
       padding: 0 4rem;
     }
 
     .about::before {
-      top: 250px;
+      top: 15.625rem;
       right: unset;
       left: 0;
     }
 
     .about::after {
-      bottom: 195px;
+      bottom: 12.1875rem;
       left: unset;
       right: 0;
     }
@@ -152,7 +149,7 @@
     }
 
     .top {
-      margin-top: -70px;
+      margin-top: -4.375rem;
     }
 
     .even {
@@ -164,16 +161,16 @@
     }
 
     .even * picture::after {
-      top: 283px;
-      right: -114px;
+      top: 17.6875rem;
+      right: -7.125rem;
     }
 
-    img {
+    .about__img img {
       width: 100%;
     }
 
     .about__img::before {
-      top: 250px;
+      top: 15.625rem;
       right: unset;
       left: 0;
     }
@@ -187,15 +184,15 @@
     }
 
     .even > .about__text {
-      margin-top: 200px;
+      margin-top: 12.5rem;
     }
 
     h2 {
       min-width: 9ch;
     }
 
-    svg {
-    margin-bottom: 48px;
-  }
+    .about__text img {
+      margin-bottom: 3rem;
+    }
   }
 </style>

@@ -5,7 +5,7 @@
 <section class="menu">
   <div class="menu__content">
     <div class="menu__heading">
-      <svg xmlns="http://www.w3.org/2000/svg" width="71" height="7"><g fill="none" fill-rule="evenodd"><path fill="#9E7F66" d="M15 3h56v1H15z"/><circle cx="3.5" cy="3.5" r="3" stroke="#9E7F66"/></g></svg>
+      <img src="/images/patterns/pattern-divide.svg" alt="">
       <h2>A few highlights from our menu</h2>
       <p>We cater for all dietary requirements, but here’s a glimpse at some of our diner’s favourites. Our menu is revamped every season.</p>
     </div>
@@ -36,8 +36,8 @@
     text-align: center;
   }
 
-  svg {
-    margin-bottom: 32px;
+  .menu__heading img {
+    margin-bottom: 2rem;
   }
 
   h2 {
@@ -52,18 +52,18 @@
 
   @media (min-width: 37.5rem) {
     .menu {
-      padding: 96px 2rem;
+      padding: 6rem 2rem;
     }
 
     .menu__content {
-      gap: 56px;
+      gap: 3.5rem;
     }
   }
 
   @media (min-width: 1050px) { 
     .menu {
-      padding: 201px 4rem 65px;
-      margin-top: -200px;
+      padding: 12.5625rem 4rem 4.0625rem;
+      margin-top: -12.5rem;
     }
   }
 
@@ -72,7 +72,7 @@
       grid-auto-flow: column;
       justify-content: space-between;
       grid-template-columns: 1fr 1fr;
-      gap: 30px;
+      gap: 1.875rem;
     }
 
     .menu__heading {
@@ -82,8 +82,8 @@
       width: 100%;
     }
 
-    svg {
-      margin-bottom: 48px;
+    .menu__heading img {
+      margin-bottom: 3rem;
     }
   }
 </style>

@@ -46,14 +46,14 @@
       background-image: image-set(
         url("/images/homepage/ready-bg-tablet.jpg") 1x,
         url("/images/homepage/ready-bg-tablet@2x.jpg") 2x);
-      padding: 4.0625rem 1.5rem;
+      padding: 4rem 1.5rem;
     }
   }
 
-  @media (min-width: 1150px) { 
+  @media (min-width: 71.875rem) { 
     .cta {
       height: 15rem;
-      padding: 4.0625rem 4rem;
+      padding: 4rem;
       background-image: -webkit-image-set(
         url("/images/homepage/ready-bg-desktop.jpg") 1x,
         url("/images/homepage/ready-bg-desktop@2x.jpg") 2x);

@@ -15,6 +15,10 @@
   padding: 0;
 }
 
+img {
+  display: block;
+}
+
 body {
   font-family: "Spartan", sans-serif;
   font-size: 1rem;

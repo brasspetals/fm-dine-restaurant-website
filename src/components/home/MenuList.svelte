@@ -1,5 +1,5 @@
 <script>
-  import {menu} from '../../scripts/menu.js'
+  import {menu} from '../../../public/scripts/menu.js'
 </script>
 
 <ul class="menu__list">
@@ -33,24 +33,23 @@
   }
 
   img {
-    display: block;
     width: 100%;
   }
 
   .dish__text {
     display: grid;
-    gap: 4px;
+    gap: 0.25rem;
   }
 
   .description {
     font-size: 0.9375rem;
     line-height: 1.8667;
-    letter-spacing: -0.19px;
+    letter-spacing: -0.0119rem;
     max-width: 24ch;
   }
 
   .dish:not(:last-of-type) {
-    border-bottom: 1px solid hsla(0, 0%, 100%, .15);
+    border-bottom: 0.0625rem solid hsla(0, 0%, 100%, .15);
     padding-bottom: 1.5rem;
   }
 
@@ -59,7 +58,7 @@
       text-align: left;
       justify-content: start;
       width: 100%;
-      max-width: 575px;
+      max-width: 35.9375rem;
     }
 
     .dish {
@@ -77,10 +76,10 @@
       content: '';
       background-color: var(--color-brown);
       position: absolute;
-      height: 1px;
+      height: 0.0625rem;
       width: 2rem;
       right: -2rem;
-      top: 18px;
+      top: 1.125rem;
     }
 
     .dish__text {
@@ -88,7 +87,7 @@
     }
 
     h3 {
-      margin-top: 5px;
+      margin-top: 0.3125rem;
     }
 
     .description {
@@ -96,9 +95,9 @@
     }
   }
 
-  @media (min-width: 1050px) { 
+  @media (min-width: 65.625rem) { 
     .menu__list {
-      padding: 55px 0;
+      padding: 3.4375rem 0;
     }
   }
 </style>

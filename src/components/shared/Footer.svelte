@@ -1,8 +1,10 @@
-<script></script>
+<script>
+  import Logo from './Logo.svelte'
+</script>
 
 <footer>
   <div class="footer-content">
-    <a href="/"><img class="footer__logo" src="./images/logo.svg/" alt="Dine - Home"></a>
+    <Logo footer=true/>
     <div class="footer__text">
       <address>
         <p>Marthwaite, Sedbergh</p>
@@ -28,12 +30,7 @@
   .footer-content {
     display: grid;
     justify-items: center;
-    gap: 1.875rem;
-  }
-
-  .footer__logo {
-    height: 2.5rem;
-    width: auto;
+    gap: 2.5rem;
   }
 
   .footer__text {
@@ -47,7 +44,7 @@
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 2;
-    letter-spacing: 2px;
+    letter-spacing: 0.125rem;
     text-transform: uppercase;
   }
 
@@ -59,13 +56,13 @@
     color: var(--color-brown);
   }
 
-  @media (max-width: 365px) {
+  @media (max-width: 22.8125rem) {
     span {
       display: block;
     }
   }
 
-  @media (min-width: 650px) { 
+  @media (min-width: 40.625rem) { 
     footer {
       padding: 4rem 2.5rem;
     }
@@ -73,11 +70,7 @@
     .footer-content {
       grid-auto-flow: column;
       justify-content: start;
-      gap: 130px;
-    }
-
-    .footer-content > a {
-      align-self: start;
+      gap: 8.125rem;
     }
 
     .footer__text {
@@ -85,9 +78,9 @@
     }
   }
 
-  @media (min-width: 960px) {
+  @media (min-width: 60rem) {
     .footer-content {
-      max-width: 1111px;
+      max-width: 69.6875rem;
       margin: 0 auto;
       grid-template-columns: auto 1fr;
     }
@@ -100,13 +93,13 @@
     }
   }
 
-  @media (min-width: 1150px) { 
+  @media (min-width: 71.875rem) { 
     footer {
-      padding: 4.875rem 4rem;
+      padding: 4.8125rem 4rem;
     }
 
     .footer-content {
-      gap: 12.0625rem;
+      gap: 11.875rem;
     }
   }
 </style>
