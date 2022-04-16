@@ -1,32 +1,14 @@
 <script>
-	import Hero from './components/home/Hero.svelte'
-	import About from './components/home/About.svelte'
-	import Menu from './components/home/Menu.svelte'
-	import Events from './components/home/Events.svelte'
-	import CTA from './components/home/CTA.svelte'
-	import Footer from './components/shared/Footer.svelte'
+  import { Router, Route } from "svelte-routing";
+  import Home from "./components/pages/Home.svelte";
+  import Book from "./components/pages/Book.svelte";
+
+  export let url = "";
 </script>
 
-<div class="container">
-	<Hero/>
-	<main>
-		<About/>
-		<Menu/>
-		<Events/>
-		<CTA/>
-	</main>
-	<Footer/>
-	
-</div>
-
-<style>
- .container {
-	 overflow-x: hidden;
-	 margin: 0 auto;
-	 max-width: 93.75rem;
- }
-
- main {
-	 background-color: var(--color-white);
- }
-</style>
+<Router url="{url}">
+  <div>
+    <Route path="book" component="{Book}" />
+    <Route path="/"><Home /></Route>
+  </div>
+</Router>
