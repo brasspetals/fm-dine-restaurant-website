@@ -48,7 +48,6 @@
 
   p {
     padding: 1.5rem 0 2rem;
-    max-width: 30ch;
   }
 
   @media (min-width: 37.5rem) {

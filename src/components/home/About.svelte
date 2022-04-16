@@ -15,7 +15,7 @@
       <p>Our relaxed surroundings make dining with us a great experience for everyone. We can even arrange a tour of the farm before your meal.</p>
     </div>
   </div>
-  <div class="about__content even">
+  <div class="about__content bottom">
     <div class="about__img">
       <picture>
         <source media="(min-width: 65.625rem)" srcset="./images/homepage/locally-sourced-desktop.jpg, ./images/homepage/locally-sourced-desktop@2x.jpg 2x">
@@ -80,10 +80,6 @@
     margin-bottom: 1rem;
   }
 
-  p {
-    max-width: 30ch;
-  }
-
   @media (min-width: 37.5rem) {
     .about {
      position: relative;
@@ -112,11 +108,11 @@
       margin-top: -6rem;
     }
 
-    .even * picture {
+    .bottom * picture {
       position: relative;
     }
 
-    .even * picture::after {
+    .bottom * picture::after {
       content: url("/images/patterns/pattern-lines.svg");
       position: absolute;
       top: 14.25rem;
@@ -152,15 +148,15 @@
       margin-top: -4.375rem;
     }
 
-    .even {
+    .bottom {
       grid-template-columns: auto minmax(40%, max-content);
     }
     
-    .even > .about__img {
+    .bottom > .about__img {
       order: 2;
     }
 
-    .even * picture::after {
+    .bottom * picture::after {
       top: 17.6875rem;
       right: -7.125rem;
     }
@@ -183,7 +179,7 @@
       margin-top: 39.5%;
     }
 
-    .even > .about__text {
+    .bottom > .about__text {
       margin-top: 12.5rem;
     }
 

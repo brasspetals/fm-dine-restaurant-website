@@ -45,11 +45,6 @@
     margin-bottom: 1rem;
   }
 
-  p {
-    max-width: 30ch;
-  }
-
-
   @media (min-width: 37.5rem) {
     .menu {
       padding: 6rem 2rem;
