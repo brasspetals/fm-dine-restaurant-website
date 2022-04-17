@@ -7,8 +7,16 @@
 </script>
 
 <Router url="{url}">
-  <div>
+  <div class="container">
     <Route path="book" component="{Book}" />
     <Route path="/"><Home /></Route>
   </div>
 </Router>
+
+<style>
+  .container {
+	 overflow-x: hidden;
+	 margin: 0 auto;
+	 max-width: 93.75rem;
+ }
+</style>

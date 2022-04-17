@@ -7,7 +7,6 @@
 	import Footer from '../shared/Footer.svelte'
 </script>
 
-<div class="container">
 	<Hero/>
 	<main>
 		<About/>
@@ -16,15 +15,8 @@
 		<CTA/>
 	</main>
 	<Footer/>
-</div>
 
 <style>
- .container {
-	 overflow-x: hidden;
-	 margin: 0 auto;
-	 max-width: 93.75rem;
- }
-
  main {
 	 background-color: var(--color-white);
  }

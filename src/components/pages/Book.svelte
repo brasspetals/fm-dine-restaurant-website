@@ -1,15 +1,7 @@
 <script>
+	import Hero from '../booking/Hero.svelte'
 	import Footer from '../shared/Footer.svelte'
 </script>
 
-<div class="container">
+	<Hero/>
 	<Footer/>
-</div>
-
-<style>
- .container {
-	 overflow-x: hidden;
-	 margin: 0 auto;
-	 max-width: 93.75rem;
- }
-</style>

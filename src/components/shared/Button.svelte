@@ -1,9 +1,10 @@
 <script>
   export let black = false
-  export let href ="/book"
+  export let href = "/book"
+  export let text = "Book a table"
 </script>
 
-<a href="{href}" class:black={black}>Book a table</a>
+<a href="{href}" class:black={black}>{text}</a>
 
 <style>
   a {

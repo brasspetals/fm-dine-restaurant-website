@@ -13,7 +13,6 @@
 
   .footer {
     height: 2.5rem;
-    /* width: auto; */
   }
 
   @media (min-width: 37.5rem) {
@@ -21,7 +20,7 @@
       height: 2.5rem;
     }
 
-    .footer {
+    a {
       align-self: start;
     }
   }

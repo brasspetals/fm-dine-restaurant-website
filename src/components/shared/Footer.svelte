@@ -62,7 +62,7 @@
     }
   }
 
-  @media (min-width: 40.625rem) { 
+  @media (min-width: 37.5rem) { 
     footer {
       padding: 4rem 2.5rem;
     }
@@ -93,7 +93,7 @@
     }
   }
 
-  @media (min-width: 71.875rem) { 
+  @media (min-width: 65.625rem) { 
     footer {
       padding: 4.8125rem 4rem;
     }
