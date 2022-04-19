@@ -1,7 +1,11 @@
 <script>
   import Logo from '../shared/Logo.svelte'
   import Button from '../shared/Button.svelte'
+
+  let width
 </script>
+
+<svelte:window bind:innerWidth={width}/>
 
 <header>
   <div class="header-wrapper">
@@ -9,7 +13,9 @@
     <div class="header__text">
       <h1>Reservations</h1>
       <p>We can’t wait to host you. If you have any special requirements please feel free to call on the phone number below. We’ll be happy to accommodate you.</p>
-      <Button href="#" text="Reserve Place"/>
+      {#if width < 600}
+        <Button href="#" text="Reserve Place"/>
+      {/if}
     </div>
   </div>
 </header>
@@ -66,16 +72,12 @@
       justify-self: left;
     }
 
-    :global(.header__text > a) {
-      display: none;
-    }
-
     p {
       max-width: 36ch;
     }
   }
 
-  @media screen and (min-width: 65.625rem) {
+  @media screen and (min-width: 71.875rem) {
     header {
       background-image: -webkit-image-set(
         url("/images/booking/hero-bg-desktop.jpg") 1x,

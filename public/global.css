@@ -5,6 +5,7 @@
   --color-deep-blue: hsl(234, 30%, 13%);
   --color-dark-gray: hsl(218, 21%, 18%);
   --color-gray: hsl(217, 14%, 42%);
+  --color-red: hsl(0, 43%, 50%);
 }
 
 *,
@@ -15,23 +16,55 @@
   padding: 0;
 }
 
-img {
-  display: block;
-}
-
-button {
-  border: none;
-  outline: none;
-  font-family: inherit;
-  cursor: pointer;
-}
-
 body {
   background-color: var(--color-soft-black);
   font-family: "Spartan", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   color: var(--color-dark-gray);
+}
+
+img {
+  display: block;
+}
+
+button, input, select {
+  border: none;
+  outline: none;
+  font-family: inherit;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+address {
+  font-style: normal;
+}
+
+:focus-visible {
+  outline-offset: .5rem;
+  outline: 0.125rem solid var(--color-brown);
+  transition: none;
+}
+
+.sr-only {
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+.error {
+  position: absolute;
+  font-size: 10px;
+  letter-spacing: -.13px;
+  color: var(--color-red);
 }
 
 h1 {
@@ -92,19 +125,4 @@ p {
     font-size: 1.125rem;
     letter-spacing: -0.0138rem;
   }
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-address {
-  font-style: normal;
-}
-
-:focus-visible {
-  outline-offset: .5rem;
-  outline: 0.125rem solid var(--color-brown);
-  transition: none;
 }
