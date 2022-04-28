@@ -1,65 +1,160 @@
 <script>
- import NumPeople from './NumPeople.svelte'
- 
- let errorName = false
- let errorNameMsg = "This field is required"
- let errorEmail = false
- let errorEmailMsg = "This field is required"
- let errorDate = false
- let errorDateMsg = "This field is incomplete"
- let errorTime = false
- let errorTimeMsg = "This field is incomplete"
+import {fade} from 'svelte/transition'
+import NumPeople from './NumPeople.svelte'
 
+let values = {
+    name: '',
+    email: '',
+    month: '',
+    day: '',
+    year: '',
+    hour: '',
+    minute: '',
+    selected: 'AM'
+  }
+
+let errors = {
+  name: false,
+  email: false,
+  date: false,
+  time: false
+}
+
+let errorMsgs = {
+  name: '',
+  email: '',
+  date: '',
+  time: ''
+}
+ 
+// NAME VALIDATION
+ const validateName = () => {
+  if (values.name == "" || values.name == undefined) {
+    errorMsgs.name = "This field is required."
+    errors.name = true
+  } else {
+    errorMsgs.name = ""
+    errors.name = false
+  }
+}
+ 
+// EMAIL VALIDATION
+const validateEmail = () => {
+  const emailRegex = /^[a-zA-Z][a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}$/
+  errors.email = true
+  
+  if (values.email == "" || values.email == undefined) {
+    errorMsgs.email = "This field is required."
+  } else if (!values.email.match(emailRegex)) {
+    errorMsgs.email = "Please use a valid email address."
+  } else {
+    errorMsgs.email = ""
+    errors.email = false
+  }
+}
+
+// DATE VALIDATION
+const validateDate = () => { 
+  const reservationDate = new Date(values.year, (values.month - 1), values.day)
+  console.log(reservationDate)
+  const currentDate = new Date()
+  
+  if (values.month === '' || values.day === '' || values.year === '' ) {
+    errors.date = true
+    errorMsgs.date = "This field is incomplete."
+  } 
+  else if (reservationDate.getTime() < currentDate.getTime()) {
+    errors.date = true
+    errorMsgs.date = "The date must be today or later."
+  } else {
+    errors.date = false
+    errorMsgs.date = ''
+  }
+}
+
+// TIME VALIDATION
+const validateTime = () => {
+  const dayOfWeek = new Date(values.year, (values.month - 1), values.day).toLocaleString('default', {weekday: 'short'})
+  console.log(dayOfWeek)
+  
+  if (values.hour === '' || values.minute === '' ) {
+    errors.time = true
+    errorMsgs.time = "This field is incomplete."
+  } else if (values.selected == 'AM' && values.hour < 9) { 
+    errors.time = true
+    errorMsgs.time = "Invalid time. Please check open hours."
+  } else if (
+    (values.selected == 'PM' && (dayOfWeek == 'Sat' || dayOfWeek == 'Sun')) 
+    && values.hour >= 11 && values.minute > 29) {
+    errors.time = true
+    errorMsgs.time = "Invalid time. Please check open hours."
+  } else if (
+    (values.selected == 'PM' && (dayOfWeek !== 'Sat' || dayOfWeek !== 'Sun')) 
+    && values.hour >= 10) {
+    errors.time = true
+    errorMsgs.time = "Invalid time. Please check open hours."
+  } else {
+    errors.time = false
+    errorMsgs.time = ''
+  }
+}
+
+// FORM VALIDATION
+const validateForm = () => {
+  validateName();
+  validateEmail();
+  validateDate();
+  validateTime();
+}
 </script>
 
-
 <div class="pattern-wrap">
-  <form action="#" class="form">
+  <form action="#" class="form" on:submit|preventDefault="{validateForm}">
     <div class="input-container">
-      <input class:invalid={errorName} type="text" name="name" id="name" placeholder="Name"
-      aria-label="Name" aria-invalid="false" aria-describedby="error-name" required>
-      {#if errorName}
-        <p id="error-name" class="error error--input">{errorNameMsg}</p>
+      <input class:invalid={errors.name} type="text" name="name" id="name" placeholder="Name"
+      aria-label="Name" aria-invalid="false" aria-describedby="error-name" bind:value={values.name}>
+      {#if errors.name}
+        <p id="error-name" class="error error--input" transition:fade>{errorMsgs.name}</p>
       {/if}
     </div>
     <div class="input-container">
-      <input class:invalid={errorEmail} type="email" name="email" id="email" placeholder="Email"
-      aria-label="Email address" aria-invalid="false" aria-describedby="error-email" required>
-      {#if errorEmail}
-        <p id="error-email" class="error error--input">{errorEmailMsg}</p>
+      <input class:invalid={errors.email} type="email" name="email" id="email" placeholder="Email"
+      aria-label="Email address" aria-invalid="false" aria-describedby="error-email" bind:value={values.email}>
+      {#if errors.email}
+        <p id="error-email" class="error error--input" transition:fade>{errorMsgs.email}</p>
       {/if}
     </div>
     <fieldset>
       <div class="legend-container">
-        <legend class:invalid={errorDate}>Pick a date</legend>
-        {#if errorDate}
-          <p id="error-date" class="error error--pick">{errorDateMsg}</p>
+        <legend class:invalid={errors.date}>Pick a date</legend>
+        {#if errors.date}
+          <p id="error-date" class="error error--pick" transition:fade>{errorMsgs.date}</p>
         {/if}
       </div>
-      <div class="pick-container">
-        <input class:invalid={errorDate} type="number" name="month" id="month" min="01" max="12" placeholder="MM" required>
-        <input class:invalid={errorDate} type="number" name="day" id="day" min="01" max="31" placeholder="DD" required>
-        <input class:invalid={errorDate} type="number" name="year" id="year" min="2022" max="2025" placeholder="YYYY" required>
+      <div class="pick-container" id="date">
+        <input class:invalid={errors.date} type="number" name="month" id="month" min="01" max="12" placeholder="MM" bind:value={values.month}>
+        <input class:invalid={errors.date} type="number" name="day" id="day" min="01" max="31" placeholder="DD" bind:value={values.day}>
+        <input class:invalid={errors.date} type="number" name="year" id="year" min="2022" max="2025" placeholder="YYYY" bind:value={values.year}>
       </div>
     </fieldset>
     <fieldset>
       <div class="legend-container">
-        <legend class:invalid={errorTime}>Pick a time</legend>
-        {#if errorTime}
-         <p id="error-time" class="error error--pick">{errorTimeMsg}</p>
+        <legend class:invalid={errors.time}>Pick a time</legend>
+        {#if errors.time}
+         <p id="error-time" class="error error--pick">{errorMsgs.time}</p>
         {/if}
       </div>
       <div class="pick-container">
-        <input class:invalid={errorTime} type="number" name="hour" id="hour" min="01" max="12" placeholder="09" required>
-        <input class:invalid={errorTime} type="number" name="minute" id="minute" min="00" max="59" placeholder="00" required>
-        <select>
+        <input class:invalid={errors.time} type="number" name="hour" id="hour" min="01" max="12" placeholder="09" bind:value={values.hour}>
+        <input class:invalid={errors.time} type="number" name="minute" id="minute" min="00" max="59" placeholder="00" bind:value={values.minute}>
+        <select bind:value={values.selected} class:invalid={errors.time}>
           <option value="AM">AM</option>
           <option value="PM">PM</option>
         </select>
       </div>
     </fieldset>
     <NumPeople/>
-    <button class="submit" type="submit">Make Reservation</button>
+    <button class="submit" type="submit" >Make Reservation</button>
   </form>
 </div>
 
