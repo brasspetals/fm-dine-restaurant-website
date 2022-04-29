@@ -8,7 +8,7 @@
     <div class="dish__img">
       <picture>
         <source media="(min-width: 37.5rem)" srcset="{dish.tabletDesktopSrcset}">
-        <img srcset="{dish.mobileSrcset}" alt="">
+        <img src={dish.src} srcset="{dish.mobileSrcset}" alt="">
       </picture>
     </div>
     <div class="dish__text">

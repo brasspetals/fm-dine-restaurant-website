@@ -1,5 +1,6 @@
 <script>
   import Logo from './Logo.svelte'
+  import Attribution from './Attribution.svelte'
 </script>
 
 <footer>
@@ -9,7 +10,7 @@
       <address>
         <p>Marthwaite, Sedbergh</p>
         <p>Cumbria</p>
-        <a href="tel:+00 44 123 4567" class="tel">+00 44 123 4567</a> 
+        <a href="tel:+00441234567" class="tel">+00 44 123 4567</a> 
       </address>
       <div class="hours">
         <p>Open Times</p>
@@ -19,6 +20,7 @@
     </div>
   </div>
 </footer>
+<Attribution/>
 
 <style>
   footer {

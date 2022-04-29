@@ -46,7 +46,7 @@ address {
 }
 
 :focus-visible {
-  outline-offset: .5rem;
+  outline-offset: .3rem;
   outline: 0.125rem solid var(--color-brown);
   transition: none;
 }
@@ -58,6 +58,10 @@ address {
   width:1px;
   height:1px;
   overflow:hidden;
+}
+
+.shadow {
+  box-shadow: 0rem 7rem 5rem -3.125rem rgba(0, 0, 0, .3);
 }
 
 .error {

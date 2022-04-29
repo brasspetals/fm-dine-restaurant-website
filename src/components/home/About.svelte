@@ -1,12 +1,25 @@
-<script></script>
+<script>
+  let y
+  let height
+  let width
+  
+  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+  const reducedMotion = mediaQuery.matches
+</script>
 
-<section class="about">
+<svelte:window bind:innerWidth={width} bind:scrollY={y}/>
+
+<section class="about" bind:offsetHeight={height}>
   <div class="about__content">
     <div class="about__img">
       <picture>
         <source media="(min-width: 65.625rem)" srcset="./images/homepage/enjoyable-place-desktop.jpg, ./images/homepage/enjoyable-place-desktop@2x.jpg 2x">
         <source media="(min-width: 37.5rem)" srcset="./images/homepage/enjoyable-place-tablet.jpg, ./images/homepage/enjoyable-place-tablet@2x.jpg 2x">
-        <img class="top" srcset="./images/homepage/enjoyable-place-mobile.jpg, ./images/homepage/enjoyable-place-mobile@2x.jpg 2x" alt="">
+        <!-- {#if reducedMotion || width < 1050} -->
+          <img class="top shadow" src="./images/homepage/enjoyable-place-mobile.jpg" srcset="./images/homepage/enjoyable-place-mobile.jpg, ./images/homepage/enjoyable-place-mobile@2x.jpg 2x" alt="">
+        <!-- {:else}
+          <img style="transform: translate(0,{(-y + 400) / 5}px)" class="top" src="./images/homepage/enjoyable-place-mobile.jpg" srcset="./images/homepage/enjoyable-place-mobile.jpg, ./images/homepage/enjoyable-place-mobile@2x.jpg 2x" alt="">
+        {/if} -->
       </picture>
     </div>
     <div class="about__text">
@@ -20,7 +33,11 @@
       <picture>
         <source media="(min-width: 65.625rem)" srcset="./images/homepage/locally-sourced-desktop.jpg, ./images/homepage/locally-sourced-desktop@2x.jpg 2x">
         <source media="(min-width: 37.5rem)" srcset="./images/homepage/locally-sourced-tablet.jpg, ./images/homepage/locally-sourced-tablet@2x.jpg 2x">
-        <img srcset="./images/homepage/locally-sourced-mobile.jpg, ./images/homepage/locally-sourced-mobile@2x.jpg 2x" alt="">
+        <!-- {#if reducedMotion || width < 1050} -->
+          <img class="shadow" src="./images/homepage/locally-sourced-mobile.jpg" srcset="./images/homepage/locally-sourced-mobile.jpg, ./images/homepage/locally-sourced-mobile@2x.jpg 2x" alt="">
+        <!-- {:else}
+          <img style="transform: translate(0,{(-y + height) / 5}px)" src="./images/homepage/locally-sourced-mobile.jpg" srcset="./images/homepage/locally-sourced-mobile.jpg, ./images/homepage/locally-sourced-mobile@2x.jpg 2x" alt="">
+        {/if} -->
       </picture>
     </div>
     <div class="about__text">
@@ -57,7 +74,6 @@
   .about__img img { 
     position: relative;
     z-index: 1;
-    box-shadow: 0rem 3rem 5rem -3.125rem rgba(0, 0, 0, .75);
     max-width: 100%;
   }
 

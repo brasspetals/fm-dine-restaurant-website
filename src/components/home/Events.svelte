@@ -13,7 +13,7 @@
         <picture>
           <source media="(min-width: 65.625rem)" srcset={events[activeItem].desktopSrcset}>
           <source media="(min-width: 37.5rem)" srcset={events[activeItem].tabletSrcset}>
-          <img in:fade={{delay: 650, duration:650, easing:sineInOut}} out:fade={{duration:650, easing:sineInOut}} srcset={events[activeItem].mobileSrcset} alt="">
+          <img class="shadow" in:fade={{delay: 650, duration:650, easing:sineInOut}} out:fade={{duration:650, easing:sineInOut}} src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="">
         </picture>
     </div>
     <div class="events-text-container">
@@ -45,7 +45,6 @@
   }
 
   .events__img img {
-    box-shadow: 0rem 3rem 5rem -3.125rem rgba(0, 0, 0, .75);
     max-width: 100%;
     margin-bottom: 3rem;
   }
@@ -155,6 +154,11 @@
   @media screen and (min-width: 71.875rem) { 
     .events {
       padding: 10rem 2.4375rem 6.5rem;
+    }
+
+    .events::before {
+      right: unset;
+      left: -21.875rem;
     }
 
     .events-content-container {

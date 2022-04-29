@@ -109,7 +109,7 @@ const validateForm = () => {
 </script>
 
 <div class="pattern-wrap">
-  <form action="#" class="form" on:submit|preventDefault="{validateForm}">
+  <form action="#" class="form shadow" on:submit|preventDefault="{validateForm}">
     <div class="input-container">
       <input class:invalid={errors.name} type="text" name="name" id="name" placeholder="Name"
       aria-label="Name" aria-invalid="false" aria-describedby="error-name" bind:value={values.name}>
@@ -178,7 +178,6 @@ const validateForm = () => {
     gap: 2rem;
     padding: 2rem;
     background-color: var(--color-white);
-    box-shadow: 0rem 3rem 5rem -3.125rem rgba(0, 0, 0, .75);
     max-width: 33.75rem;
     margin: 0 auto;
   }
