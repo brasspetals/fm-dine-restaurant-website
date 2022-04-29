@@ -1,6 +1,4 @@
 <script>
-  import {fade} from 'svelte/transition'
-  import {sineInOut} from 'svelte/easing'
   import {events} from '../../../public/scripts/events.js'
   import Button from '../shared/Button.svelte'
 
@@ -13,7 +11,7 @@
         <picture>
           <source media="(min-width: 65.625rem)" srcset={events[activeItem].desktopSrcset}>
           <source media="(min-width: 37.5rem)" srcset={events[activeItem].tabletSrcset}>
-          <img class="shadow" in:fade={{delay: 650, duration:650, easing:sineInOut}} out:fade={{duration:650, easing:sineInOut}} src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="">
+          <img class="shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="">
         </picture>
     </div>
     <div class="events-text-container">
@@ -23,8 +21,8 @@
         <button id="social" class="tab" class:active="{activeItem === 'social'}" on:click="{() => activeItem = 'social'}">Social Events</button>
       </div>
       <div class="events__text">
-          <h2 in:fade={{delay: 650, duration:650, easing:sineInOut}} out:fade={{duration:650, easing:sineInOut}}>{events[activeItem].type}</h2>
-          <p in:fade={{delay: 650, duration:650, easing:sineInOut}} out:fade={{duration:650, easing:sineInOut}}>{events[activeItem].description}</p>
+          <h2>{events[activeItem].type}</h2>
+          <p>{events[activeItem].description}</p>
           <Button black=true/>
       </div>
       </div>
