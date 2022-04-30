@@ -2,17 +2,34 @@
   import {events} from '../../../public/scripts/events.js'
   import Button from '../shared/Button.svelte'
 
+  let y
+  let width
   let activeItem = 'family'
+  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+  const reducedMotion = mediaQuery.matches
 </script>
+
+<svelte:window bind:innerWidth={width} bind:scrollY={y}/>
 
 <section class="events">
     <div class="events-content-container">
     <div class="events__img">
+      <div class="pattern-wrapper">
         <picture>
           <source media="(min-width: 65.625rem)" srcset={events[activeItem].desktopSrcset}>
           <source media="(min-width: 37.5rem)" srcset={events[activeItem].tabletSrcset}>
-          <img class="shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="">
+          {#if reducedMotion || width < 1050}
+            <img class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="">
+          {:else}
+            <img style="transform: translate(0,{(-y + 3100) / 13}px)"class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="">
+          {/if}
         </picture>
+        {#if reducedMotion || width < 1050}
+          <img src="/images/patterns/pattern-lines.svg" alt="" class="pattern">
+        {:else}
+          <img style="transform: translate(0,{(-y + 3000) / 8}px)" src="/images/patterns/pattern-lines.svg" alt="" class="pattern">
+        {/if}
+      </div>
     </div>
     <div class="events-text-container">
       <div class="events__tabs">
@@ -42,9 +59,13 @@
     margin: 0 auto;
   }
 
-  .events__img img {
+  .lg-img {
     max-width: 100%;
     margin-bottom: 3rem;
+  }
+
+  .pattern {
+    display: none;
   }
 
   .events-text-container {
@@ -119,21 +140,28 @@
       right: 51%;
     }
 
-    .events__img img {
+    .lg-img {
       margin-bottom: 3.5rem;
+      position: relative;
     }
 
-    .events__img > picture {
+    .pattern-wrapper {
       position: relative;
       z-index: 1;
     }
 
-    .events__img > picture::after {
-      content: url("/images/patterns/pattern-lines.svg");
+    .pattern {
+      display: block;
       position: absolute;
       top: -1.5rem;
       left: -3.625rem;
     }
+    /* .events__img * picture::after {
+      content: url("/images/patterns/pattern-lines.svg");
+      position: absolute;
+      top: -1.5rem;
+      left: -3.625rem;
+    } */
 
     .events__tabs {
       grid-auto-flow: column;
@@ -164,9 +192,13 @@
       grid-auto-flow: column;
     }
 
-    .events__img > picture::after {
+    .pattern {
       left: -2.5rem;
     }
+
+    /* .events__img * picture::after {
+      left: -2.5rem;
+    } */
 
     .events-text-container {
       max-width: 27.75rem;

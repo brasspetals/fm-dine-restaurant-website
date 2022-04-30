@@ -15,11 +15,11 @@
       <picture>
         <source media="(min-width: 65.625rem)" srcset="./images/homepage/enjoyable-place-desktop.jpg, ./images/homepage/enjoyable-place-desktop@2x.jpg 2x">
         <source media="(min-width: 37.5rem)" srcset="./images/homepage/enjoyable-place-tablet.jpg, ./images/homepage/enjoyable-place-tablet@2x.jpg 2x">
-        <!-- {#if reducedMotion || width < 1050} -->
-          <img class="top shadow" src="./images/homepage/enjoyable-place-mobile.jpg" srcset="./images/homepage/enjoyable-place-mobile.jpg, ./images/homepage/enjoyable-place-mobile@2x.jpg 2x" alt="">
-        <!-- {:else}
-          <img style="transform: translate(0,{(-y + 400) / 5}px)" class="top" src="./images/homepage/enjoyable-place-mobile.jpg" srcset="./images/homepage/enjoyable-place-mobile.jpg, ./images/homepage/enjoyable-place-mobile@2x.jpg 2x" alt="">
-        {/if} -->
+        {#if reducedMotion || width < 1050}
+          <img class="lg-img top shadow" src="./images/homepage/enjoyable-place-mobile.jpg" srcset="./images/homepage/enjoyable-place-mobile.jpg, ./images/homepage/enjoyable-place-mobile@2x.jpg 2x" alt="">
+        {:else}
+          <img style="transform: translate(0,{(-y + 700) / 9}px)" class="lg-img top shadow" src="./images/homepage/enjoyable-place-mobile.jpg" srcset="./images/homepage/enjoyable-place-mobile.jpg, ./images/homepage/enjoyable-place-mobile@2x.jpg 2x" alt="">
+        {/if}
       </picture>
     </div>
     <div class="about__text">
@@ -30,15 +30,22 @@
   </div>
   <div class="about__content bottom">
     <div class="about__img">
-      <picture>
-        <source media="(min-width: 65.625rem)" srcset="./images/homepage/locally-sourced-desktop.jpg, ./images/homepage/locally-sourced-desktop@2x.jpg 2x">
-        <source media="(min-width: 37.5rem)" srcset="./images/homepage/locally-sourced-tablet.jpg, ./images/homepage/locally-sourced-tablet@2x.jpg 2x">
-        <!-- {#if reducedMotion || width < 1050} -->
-          <img class="shadow" src="./images/homepage/locally-sourced-mobile.jpg" srcset="./images/homepage/locally-sourced-mobile.jpg, ./images/homepage/locally-sourced-mobile@2x.jpg 2x" alt="">
-        <!-- {:else}
-          <img style="transform: translate(0,{(-y + height) / 5}px)" src="./images/homepage/locally-sourced-mobile.jpg" srcset="./images/homepage/locally-sourced-mobile.jpg, ./images/homepage/locally-sourced-mobile@2x.jpg 2x" alt="">
-        {/if} -->
-      </picture>
+      <div class="pattern-wrapper">
+        <picture>
+          <source media="(min-width: 65.625rem)" srcset="./images/homepage/locally-sourced-desktop.jpg, ./images/homepage/locally-sourced-desktop@2x.jpg 2x">
+          <source media="(min-width: 37.5rem)" srcset="./images/homepage/locally-sourced-tablet.jpg, ./images/homepage/locally-sourced-tablet@2x.jpg 2x">
+          {#if reducedMotion || width < 1050}
+            <img class="lg-img shadow" src="./images/homepage/locally-sourced-mobile.jpg" srcset="./images/homepage/locally-sourced-mobile.jpg, ./images/homepage/locally-sourced-mobile@2x.jpg 2x" alt="">
+          {:else}
+            <img class="lg-img shadow" style="transform: translate(0,{(-y + height) / 9}px)" src="./images/homepage/locally-sourced-mobile.jpg" srcset="./images/homepage/locally-sourced-mobile.jpg, ./images/homepage/locally-sourced-mobile@2x.jpg 2x" alt="">
+          {/if}
+        </picture>
+        {#if reducedMotion || width < 1050}
+          <img src="/images/patterns/pattern-lines.svg" alt="" class="pattern">
+        {:else}
+          <img style="transform: translate(0,{(-y + height) / 5}px)" src="/images/patterns/pattern-lines.svg" alt="" class="pattern">
+        {/if}
+      </div>
     </div>
     <div class="about__text">
       <img src="/images/patterns/pattern-divide.svg" alt="">
@@ -71,7 +78,7 @@
     justify-content: center;
   }
 
-  .about__img img { 
+  .lg-img  { 
     position: relative;
     z-index: 1;
     max-width: 100%;
@@ -79,6 +86,10 @@
 
   .top {
     margin-top: -4.5rem;
+  }
+
+  .pattern {
+    display: none;
   }
 
   .about__text {
@@ -120,16 +131,21 @@
       padding-bottom: 7.5rem;
     }
 
+    .about__text {
+      position: relative;
+      z-index: 1;
+    }
+
     .top {
       margin-top: -6rem;
     }
 
-    .bottom * picture {
+    .pattern-wrapper {
       position: relative;
     }
 
-    .bottom * picture::after {
-      content: url("/images/patterns/pattern-lines.svg");
+    .pattern {
+      display: block;
       position: absolute;
       top: 14.25rem;
       right: -3.625rem;
@@ -172,12 +188,12 @@
       order: 2;
     }
 
-    .bottom * picture::after {
+    .pattern {
       top: 17.6875rem;
       right: -7.125rem;
     }
 
-    .about__img img {
+    .lg-img  {
       width: 100%;
     }
 

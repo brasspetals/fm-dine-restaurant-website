@@ -20,7 +20,7 @@
     </div>
   </div>
 </footer>
-<!-- <Attribution/> -->
+<Attribution/>
 
 <style>
   footer {
