@@ -18,14 +18,18 @@
         <picture>
           <source media="(min-width: 65.625rem)" srcset={events[activeItem].desktopSrcset}>
           <source media="(min-width: 37.5rem)" srcset={events[activeItem].tabletSrcset}>
-          {#if reducedMotion || width < 1050}
+          {#if reducedMotion || width < 600}
             <img class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="">
+          {:else if width < 1050}
+            <img style="transform: translate(0,{(-y + 3200) / 15}px)"class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="">
           {:else}
             <img style="transform: translate(0,{(-y + 3100) / 13}px)"class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="">
           {/if}
         </picture>
-        {#if reducedMotion || width < 1050}
+        {#if reducedMotion || width < 600}
           <img src="/images/patterns/pattern-lines.svg" alt="" class="pattern">
+        {:else if width < 1050}
+          <img style="transform: translate(0,{(-y + 3100) / 8}px)" src="/images/patterns/pattern-lines.svg" alt="" class="pattern"> 
         {:else}
           <img style="transform: translate(0,{(-y + 3000) / 8}px)" src="/images/patterns/pattern-lines.svg" alt="" class="pattern">
         {/if}
