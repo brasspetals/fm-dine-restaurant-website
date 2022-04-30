@@ -1,7 +1,4 @@
 <script>
-  import {fade} from 'svelte/transition'
-
-
   let people = "people"
   let number = 4
   

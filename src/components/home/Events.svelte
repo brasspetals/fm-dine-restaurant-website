@@ -156,12 +156,6 @@
       top: -1.5rem;
       left: -3.625rem;
     }
-    /* .events__img * picture::after {
-      content: url("/images/patterns/pattern-lines.svg");
-      position: absolute;
-      top: -1.5rem;
-      left: -3.625rem;
-    } */
 
     .events__tabs {
       grid-auto-flow: column;
@@ -195,10 +189,6 @@
     .pattern {
       left: -2.5rem;
     }
-
-    /* .events__img * picture::after {
-      left: -2.5rem;
-    } */
 
     .events-text-container {
       max-width: 27.75rem;
