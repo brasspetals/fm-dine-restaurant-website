@@ -11,14 +11,17 @@
   const reducedMotion = mediaQuery.matches
   let fadeout = false
   let fadein = false
+  let hidden = false
 
   const selectEvent = function () {
     if (activeItem != this.id) {
       activeTab = this.id
       fadeout = true
       fadein = false
+      hidden = true
       setTimeout(() => {
         activeItem = this.id
+        hidden = false
         fadein = true
         fadeout = false
       }, 450);
@@ -35,19 +38,19 @@
     <div class="events__img">
       <div class="pattern-wrapper">
         <picture>
-          <source media="(min-width: 65.625rem)" srcset={events[activeItem].desktopSrcset}>
+          <source media="(min-width: 71.875rem)" srcset={events[activeItem].desktopSrcset}>
           <source media="(min-width: 37.5rem)" srcset={events[activeItem].tabletSrcset}>
           {#if reducedMotion || width < 600}
-            <img class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="" class:fadeout class:fadein>
-          {:else if width < 1050}
-            <img style="transform: translate(0,{(-y + 3200) / 15}px)" class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="" class:fadeout class:fadein>
+            <img class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="" class:fadeout class:fadein class:hidden>
+          {:else if width < 1150}
+            <img style="transform: translate(0,{(-y + 3200) / 15}px)" class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="" class:fadeout class:fadein class:hidden>
           {:else}
-            <img style="transform: translate(0,{(-y + 3100) / 13}px)" class="lg-img shadow" class:fadeout class:fadein src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="">
+            <img style="transform: translate(0,{(-y + 3100) / 13}px)" class="lg-img shadow" class:fadeout class:fadein class:hidden src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="">
           {/if}
         </picture>
         {#if reducedMotion || width < 600}
           <img src="/images/patterns/pattern-lines.svg" alt="" class="pattern">
-        {:else if width < 1050}
+        {:else if width < 1150}
           <img style="transform: translate(0,{(-y + 3100) / 8}px)" src="/images/patterns/pattern-lines.svg" alt="" class="pattern"> 
         {:else}
           <img style="transform: translate(0,{(-y + 3000) / 8}px)" src="/images/patterns/pattern-lines.svg" alt="" class="pattern">
@@ -77,11 +80,16 @@
 
 <style>
   .fadeout {
-    animation: fadeOut .45s ease-out;
+    animation: fadeOut .5s ease-out;
   }
 
   .fadein {
     animation: fadeIn .45s ease-in backwards;
+    animation-delay: .2s;
+  }
+
+  .hidden {
+    opacity: 0;
   }
 
   .events {
@@ -143,7 +151,13 @@
     left: 50%;
     transform: translateX(-50%) scaleX(0);
     background-color:var(--color-brown);
-    transition: all .9s ease;
+    transition: all 1.15s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tab::after {
+      transition: none;
+    }
   }
 
   .active.tab::after {
