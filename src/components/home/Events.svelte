@@ -21,7 +21,7 @@
         activeItem = this.id
         fadein = true
         fadeout = false
-      }, 650);
+      }, 450);
     }  
   }
 
@@ -77,11 +77,11 @@
 
 <style>
   .fadeout {
-    animation: fadeOut .65s ease-out;
+    animation: fadeOut .45s ease-out;
   }
 
   .fadein {
-    animation: fadeIn .65s ease-in;
+    animation: fadeIn .45s ease-in backwards;
   }
 
   .events {
@@ -127,26 +127,31 @@
     color: #4C4C4C;
     opacity: .5;
     transition: opacity .5s ease;
+    position: relative;
   }
 
   .tab:hover {
     opacity: 1;
   }
-  
-  .active {
-    opacity: 1;
-    position: relative;
-  }
 
-  .active::after {
+  .tab::after {
     content:'';
     position: absolute;
     height: 0.0625rem;
     width: 3rem;
     bottom: -0.0625rem;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scaleX(0);
     background-color:var(--color-brown);
+    transition: all .9s ease;
+  }
+
+  .active.tab::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+  
+  .active.tab {
+    opacity: 1;
   }
 
   .events__text {
@@ -203,7 +208,7 @@
       margin-bottom: 3.0625rem;
     }
 
-    .active::after {
+    .tab::after {
       bottom: -0.5625rem;
     }
   }
@@ -249,11 +254,12 @@
       order: 2;
     }
 
-    .active::after {
+    .tab::after {
       bottom: 47%;
       left: -4.9375rem;
       width: 6rem;
       z-index: 0;
+      transform-origin: left;
     }
   }
 </style>
