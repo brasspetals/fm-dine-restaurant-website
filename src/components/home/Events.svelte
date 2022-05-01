@@ -1,14 +1,12 @@
 <script>
   import {events} from '../../../public/scripts/events.js'
+  import {reducedMotion} from '../../../public/scripts/stores'
   import Button from '../shared/Button.svelte'
-
 
   let y
   let width
   let activeItem = 'family'
   let activeTab = 'family'
-  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-  const reducedMotion = mediaQuery.matches
   let fadeout = false
   let fadein = false
   let hidden = false
@@ -27,8 +25,6 @@
       }, 450);
     }  
   }
-
-
 </script>
 
 <svelte:window bind:innerWidth={width} bind:scrollY={y}/>
@@ -40,7 +36,7 @@
         <picture>
           <source media="(min-width: 71.875rem)" srcset={events[activeItem].desktopSrcset}>
           <source media="(min-width: 37.5rem)" srcset={events[activeItem].tabletSrcset}>
-          {#if reducedMotion || width < 600}
+          {#if $reducedMotion || width < 600}
             <img class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="" class:fadeout class:fadein class:hidden>
           {:else if width < 1150}
             <img style="transform: translate(0,{(-y + 3200) / 15}px)" class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="" class:fadeout class:fadein class:hidden>
@@ -48,7 +44,7 @@
             <img style="transform: translate(0,{(-y + 3100) / 13}px)" class="lg-img shadow" class:fadeout class:fadein class:hidden src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="">
           {/if}
         </picture>
-        {#if reducedMotion || width < 600}
+        {#if $reducedMotion || width < 600}
           <img src="/images/patterns/pattern-lines.svg" alt="" class="pattern">
         {:else if width < 1150}
           <img style="transform: translate(0,{(-y + 3100) / 8}px)" src="/images/patterns/pattern-lines.svg" alt="" class="pattern"> 
@@ -59,7 +55,7 @@
     </div>
     <div class="events-text-container">
       <div class="events__tabs">
-        {#if reducedMotion}
+        {#if $reducedMotion}
           <button id="family" class="tab" class:active="{activeItem === 'family'}" on:click="{() => activeItem = 'family'}">Family Gathering</button>
           <button id="special" class="tab" class:active="{activeItem === 'special'}" on:click="{() => activeItem = 'special'}">Special Events</button>
           <button id="social" class="tab" class:active="{activeItem === 'social'}" on:click="{() => activeItem = 'social'}">Social Events</button>

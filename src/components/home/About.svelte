@@ -1,10 +1,8 @@
 <script>
+  import {reducedMotion} from '../../../public/scripts/stores'
   let y
   let height
   let width
-  
-  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-  const reducedMotion = mediaQuery.matches
 </script>
 
 <svelte:window bind:innerWidth={width} bind:scrollY={y}/>
@@ -15,7 +13,7 @@
       <picture>
         <source media="(min-width: 65.625rem)" srcset="./images/homepage/enjoyable-place-desktop.jpg, ./images/homepage/enjoyable-place-desktop@2x.jpg 2x">
         <source media="(min-width: 37.5rem)" srcset="./images/homepage/enjoyable-place-tablet.jpg, ./images/homepage/enjoyable-place-tablet@2x.jpg 2x">
-        {#if reducedMotion || width < 600}
+        {#if $reducedMotion || width < 600}
           <img class="lg-img top shadow" src="./images/homepage/enjoyable-place-mobile.jpg" srcset="./images/homepage/enjoyable-place-mobile.jpg, ./images/homepage/enjoyable-place-mobile@2x.jpg 2x" alt="">
         {:else if width < 1050}
           <img style="transform: translate(0,{(-y + 800) / 15}px)" class="lg-img top shadow" src="./images/homepage/enjoyable-place-mobile.jpg" srcset="./images/homepage/enjoyable-place-mobile.jpg, ./images/homepage/enjoyable-place-mobile@2x.jpg 2x" alt="">
@@ -36,7 +34,7 @@
         <picture>
           <source media="(min-width: 65.625rem)" srcset="./images/homepage/locally-sourced-desktop.jpg, ./images/homepage/locally-sourced-desktop@2x.jpg 2x">
           <source media="(min-width: 37.5rem)" srcset="./images/homepage/locally-sourced-tablet.jpg, ./images/homepage/locally-sourced-tablet@2x.jpg 2x">
-          {#if reducedMotion || width < 600}
+          {#if $reducedMotion || width < 600}
             <img class="lg-img shadow" src="./images/homepage/locally-sourced-mobile.jpg" srcset="./images/homepage/locally-sourced-mobile.jpg, ./images/homepage/locally-sourced-mobile@2x.jpg 2x" alt="">
           {:else if width < 1050}
             <img class="lg-img shadow" style="transform: translate(0,{(-y + height) / 15}px)" src="./images/homepage/locally-sourced-mobile.jpg" srcset="./images/homepage/locally-sourced-mobile.jpg, ./images/homepage/locally-sourced-mobile@2x.jpg 2x" alt="">
@@ -44,7 +42,7 @@
             <img class="lg-img shadow" style="transform: translate(0,{(-y + height) / 9}px)" src="./images/homepage/locally-sourced-mobile.jpg" srcset="./images/homepage/locally-sourced-mobile.jpg, ./images/homepage/locally-sourced-mobile@2x.jpg 2x" alt="">
           {/if}
         </picture>
-        {#if reducedMotion || width < 600}
+        {#if $reducedMotion || width < 600}
           <img src="/images/patterns/pattern-lines.svg" alt="" class="pattern">
         {:else if width < 1050}
           <img style="transform: translate(0,{(-y + height) / 7}px)" src="/images/patterns/pattern-lines.svg" alt="" class="pattern">

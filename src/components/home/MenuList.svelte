@@ -1,23 +1,47 @@
 <script>
   import {menu} from '../../../public/scripts/menu.js'
+  import {reducedMotion} from '../../../public/scripts/stores'
+  let y
+  let width
 </script>
 
-<ul class="menu__list">
-{#each menu as dish}
-  <li class="dish">
-    <div class="dish__img">
-      <picture>
-        <source media="(min-width: 37.5rem)" srcset="{dish.tabletDesktopSrcset}">
-        <img src={dish.src} srcset="{dish.mobileSrcset}" alt="">
-      </picture>
-    </div>
-    <div class="dish__text">
-      <h3>{dish.name}</h3>
-      <p class="description">{dish.description}</p>
-    </div>
-  </li>
-{/each}
-</ul>
+<svelte:window bind:innerWidth={width} bind:scrollY={y}/>
+
+{#if $reducedMotion || width < 1050}
+  <ul class="menu__list">
+    {#each menu as dish}
+      <li class="dish " >
+        <div class="dish__img">
+          <picture>
+            <source media="(min-width: 37.5rem)" srcset="{dish.tabletDesktopSrcset}">
+            <img src={dish.src} srcset="{dish.mobileSrcset}" alt="">
+          </picture>
+        </div>
+        <div class="dish__text">
+          <h3>{dish.name}</h3>
+          <p class="description">{dish.description}</p>
+        </div>
+      </li>
+    {/each}
+  </ul>
+{:else}
+  <ul class="menu__list" style="transform: translate(0,{(-y + 1700) / 10}px)">
+  {#each menu as dish}
+    <li class="dish " >
+      <div class="dish__img">
+        <picture>
+          <source media="(min-width: 37.5rem)" srcset="{dish.tabletDesktopSrcset}">
+          <img src={dish.src} srcset="{dish.mobileSrcset}" alt="">
+        </picture>
+      </div>
+      <div class="dish__text">
+        <h3>{dish.name}</h3>
+        <p class="description">{dish.description}</p>
+      </div>
+    </li>
+  {/each}
+  </ul>
+{/if}
 
 <style>
   .menu__list {

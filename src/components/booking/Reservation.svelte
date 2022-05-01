@@ -1,10 +1,8 @@
 <script>
   import Form from './Form.svelte'
-
+  import {reducedMotion} from '../../../public/scripts/stores'
   let width
   let y
-  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-  const reducedMotion = mediaQuery.matches
 </script>
 
 <svelte:window bind:innerWidth={width} bind:scrollY={y}/>
@@ -13,7 +11,7 @@
   <div class="content-container">
     <div class="pattern-wrapper">
       <Form/>
-      {#if reducedMotion || width < 1050}
+      {#if $reducedMotion || width < 1050}
         <img src="/images/patterns/pattern-lines.svg" alt="">
       {:else}
         <img style="transform: translate(0,{-y / 11}px)" src="/images/patterns/pattern-lines.svg" alt="">
