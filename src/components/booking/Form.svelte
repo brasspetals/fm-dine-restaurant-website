@@ -108,7 +108,7 @@ const validateForm = () => {
 }
 </script>
 
-<div class="pattern-wrap">
+
   <form action="#" class="form shadow" on:submit|preventDefault="{validateForm}">
     <div class="input-container">
       <input class:invalid={errors.name} type="text" name="name" id="name" placeholder="Name"
@@ -156,13 +156,8 @@ const validateForm = () => {
     <NumPeople/>
     <button class="submit" type="submit" >Make Reservation</button>
   </form>
-</div>
 
 <style>
-  .pattern-wrap {
-    transform: translateY(-8.5625rem);
-  }
-
   .invalid,
   .invalid::placeholder {
     color: var(--color-red);
@@ -313,10 +308,6 @@ const validateForm = () => {
   }
 
   @media screen and (min-width: 37.5rem) {
-    .pattern-wrap {
-      transform: translateY(-14.375rem);
-    }
-
     .form {
       padding: 3rem;
     }
@@ -332,22 +323,6 @@ const validateForm = () => {
     select {
       width: 6.0625rem;
       background-position-x: 4rem;
-    }
-  }
-
-  @media screen and (min-width: 71.875rem) {
-    .pattern-wrap {
-      transform: translateY(-21.375rem);
-      position: relative;
-      z-index: 1;
-    }
-
-    .pattern-wrap::before {
-      content: url('/images/patterns/pattern-lines.svg');
-      position: absolute;
-      left: -5rem;
-      bottom: -2.6875rem;
-      z-index: -1;
     }
   }
 </style>
