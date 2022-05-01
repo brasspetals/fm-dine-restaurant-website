@@ -2,11 +2,30 @@
   import {events} from '../../../public/scripts/events.js'
   import Button from '../shared/Button.svelte'
 
+
   let y
   let width
   let activeItem = 'family'
+  let activeTab = 'family'
   const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
   const reducedMotion = mediaQuery.matches
+  let fadeout = false
+  let fadein = false
+
+  const selectEvent = function () {
+    if (activeItem != this.id) {
+      activeTab = this.id
+      fadeout = true
+      fadein = false
+      setTimeout(() => {
+        activeItem = this.id
+        fadein = true
+        fadeout = false
+      }, 650);
+    }  
+  }
+
+
 </script>
 
 <svelte:window bind:innerWidth={width} bind:scrollY={y}/>
@@ -19,11 +38,11 @@
           <source media="(min-width: 65.625rem)" srcset={events[activeItem].desktopSrcset}>
           <source media="(min-width: 37.5rem)" srcset={events[activeItem].tabletSrcset}>
           {#if reducedMotion || width < 600}
-            <img class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="">
+            <img class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="" class:fadeout class:fadein>
           {:else if width < 1050}
-            <img style="transform: translate(0,{(-y + 3200) / 15}px)"class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="">
+            <img style="transform: translate(0,{(-y + 3200) / 15}px)" class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="" class:fadeout class:fadein>
           {:else}
-            <img style="transform: translate(0,{(-y + 3100) / 13}px)"class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="">
+            <img style="transform: translate(0,{(-y + 3100) / 13}px)" class="lg-img shadow" class:fadeout class:fadein src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="">
           {/if}
         </picture>
         {#if reducedMotion || width < 600}
@@ -37,13 +56,19 @@
     </div>
     <div class="events-text-container">
       <div class="events__tabs">
-        <button id="family" class="tab" class:active="{activeItem === 'family'}" on:click="{() => activeItem = 'family'}">Family Gathering</button>
-        <button id="special" class="tab" class:active="{activeItem === 'special'}" on:click="{() => activeItem = 'special'}">Special Events</button>
-        <button id="social" class="tab" class:active="{activeItem === 'social'}" on:click="{() => activeItem = 'social'}">Social Events</button>
+        {#if reducedMotion}
+          <button id="family" class="tab" class:active="{activeItem === 'family'}" on:click="{() => activeItem = 'family'}">Family Gathering</button>
+          <button id="special" class="tab" class:active="{activeItem === 'special'}" on:click="{() => activeItem = 'special'}">Special Events</button>
+          <button id="social" class="tab" class:active="{activeItem === 'social'}" on:click="{() => activeItem = 'social'}">Social Events</button>
+        {:else}
+          <button id="family" class="tab" class:active="{activeTab === 'family'}" on:click="{selectEvent}">Family Gathering</button>
+          <button id="special" class="tab" class:active="{activeTab === 'special'}" on:click="{selectEvent}">Special Events</button>
+          <button id="social" class="tab" class:active="{activeTab === 'social'}" on:click="{selectEvent}">Social Events</button>
+        {/if}
       </div>
       <div class="events__text">
-          <h2>{events[activeItem].type}</h2>
-          <p>{events[activeItem].description}</p>
+          <h2 class:fadeout class:fadein>{events[activeItem].type}</h2>
+          <p class:fadeout class:fadein>{events[activeItem].description}</p>
           <Button black=true/>
       </div>
       </div>
@@ -51,6 +76,14 @@
 </section>
 
 <style>
+  .fadeout {
+    animation: fadeOut .65s ease-out;
+  }
+
+  .fadein {
+    animation: fadeIn .65s ease-in;
+  }
+
   .events {
     padding: 5rem 1.5rem 7.75rem;
   }

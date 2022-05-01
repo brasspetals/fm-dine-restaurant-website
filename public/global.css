@@ -16,6 +16,15 @@
   padding: 0;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   background-color: var(--color-soft-black);
   font-family: "Spartan", sans-serif;
@@ -128,5 +137,24 @@ p {
   p {
     font-size: 1.125rem;
     letter-spacing: -0.0138rem;
+  }
+}
+
+/* ANIMATIONS */
+@keyframes fadeOut {
+  0% { 
+    opacity: 1;
+  }
+  100% { 
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% { 
+    opacity: 0;
+  }
+  100% { 
+    opacity: 1;
   }
 }
