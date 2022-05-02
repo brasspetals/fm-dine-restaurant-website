@@ -76,7 +76,7 @@
 
 <style>
   .fadeout {
-    animation: fadeOut .5s ease-out;
+    animation: fadeOut .45s ease-out;
   }
 
   .fadein {
@@ -147,7 +147,7 @@
     left: 50%;
     transform: translateX(-50%) scaleX(0);
     background-color:var(--color-brown);
-    transition: all 1.15s ease;
+    transition: all 1s ease;
   }
 
   @media (prefers-reduced-motion: reduce) {

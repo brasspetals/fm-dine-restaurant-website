@@ -56,7 +56,7 @@
     }
 
     .content-container {
-      max-width: 1158px;
+      max-width: 72.375rem;
       margin: 0 auto;
       display: grid;
       justify-content: end;

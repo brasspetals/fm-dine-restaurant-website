@@ -27,7 +27,7 @@
   a { 
     color: var(--color-white);
     transition: color .4s ease;
-    border-bottom: 1px solid;
+    border-bottom: 0.0625rem solid;
   }
 
   a:hover {

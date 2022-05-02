@@ -55,14 +55,14 @@
     }
   }
 
-  @media (min-width: 1050px) { 
+  @media (min-width: 65.625rem) { 
     .menu {
       padding: 12.5625rem 4rem 4.0625rem;
       margin-top: -12.5rem;
     }
   }
 
-  @media (min-width:1150px) {   
+  @media (min-width: 71.875rem) {   
     .menu__content {
       grid-auto-flow: column;
       justify-content: space-between;

@@ -16,7 +16,7 @@
         {#if $reducedMotion || width < 600}
           <img class="lg-img top shadow" src="./images/homepage/enjoyable-place-mobile.jpg" srcset="./images/homepage/enjoyable-place-mobile.jpg, ./images/homepage/enjoyable-place-mobile@2x.jpg 2x" alt="">
         {:else if width < 1050}
-          <img style="transform: translate(0,{(-y + 800) / 15}px)" class="lg-img top shadow" src="./images/homepage/enjoyable-place-mobile.jpg" srcset="./images/homepage/enjoyable-place-mobile.jpg, ./images/homepage/enjoyable-place-mobile@2x.jpg 2x" alt="">
+          <img style="transform: translate(0,{(-y + 850) / 15}px)" class="lg-img top shadow" src="./images/homepage/enjoyable-place-mobile.jpg" srcset="./images/homepage/enjoyable-place-mobile.jpg, ./images/homepage/enjoyable-place-mobile@2x.jpg 2x" alt="">
         {:else}
           <img style="transform: translate(0,{(-y + 700) / 9}px)" class="lg-img top shadow" src="./images/homepage/enjoyable-place-mobile.jpg" srcset="./images/homepage/enjoyable-place-mobile.jpg, ./images/homepage/enjoyable-place-mobile@2x.jpg 2x" alt="">
         {/if}
@@ -37,7 +37,7 @@
           {#if $reducedMotion || width < 600}
             <img class="lg-img shadow" src="./images/homepage/locally-sourced-mobile.jpg" srcset="./images/homepage/locally-sourced-mobile.jpg, ./images/homepage/locally-sourced-mobile@2x.jpg 2x" alt="">
           {:else if width < 1050}
-            <img class="lg-img shadow" style="transform: translate(0,{(-y + height) / 15}px)" src="./images/homepage/locally-sourced-mobile.jpg" srcset="./images/homepage/locally-sourced-mobile.jpg, ./images/homepage/locally-sourced-mobile@2x.jpg 2x" alt="">
+            <img class="lg-img shadow" style="transform: translate(0,{(-y + height + 50) / 15}px)" src="./images/homepage/locally-sourced-mobile.jpg" srcset="./images/homepage/locally-sourced-mobile.jpg, ./images/homepage/locally-sourced-mobile@2x.jpg 2x" alt="">
           {:else}
             <img class="lg-img shadow" style="transform: translate(0,{(-y + height) / 9}px)" src="./images/homepage/locally-sourced-mobile.jpg" srcset="./images/homepage/locally-sourced-mobile.jpg, ./images/homepage/locally-sourced-mobile@2x.jpg 2x" alt="">
           {/if}
@@ -119,7 +119,7 @@
     .about::before {
       content: url("/images/patterns/pattern-curve-top-right.svg");
       position: absolute;
-      top: 100px;
+      top: 6.25rem;
       right: 51%;
     }
 

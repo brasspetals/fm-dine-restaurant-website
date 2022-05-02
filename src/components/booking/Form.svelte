@@ -75,7 +75,6 @@ const validateDate = () => {
 // TIME VALIDATION
 const validateTime = () => {
   const dayOfWeek = new Date(values.year, (values.month - 1), values.day).toLocaleString('default', {weekday: 'short'})
-  console.log(dayOfWeek)
   
   if (values.hour === '' || values.minute === '' ) {
     errors.time = true
@@ -105,56 +104,69 @@ const validateForm = () => {
   validateEmail();
   validateDate();
   validateTime();
+  
+  if (Object.values(errors).every((v) => v === false)) {
+    values = {
+      name: '',
+      email: '',
+      month: '',
+      day: '',
+      year: '',
+      hour: '',
+      minute: '',
+      selected: 'AM'
+    }
+  }
 }
 </script>
 
 
-  <form action="#" class="form shadow" on:submit|preventDefault="{validateForm}">
+  <form action="#" id="form" class="form shadow" on:submit|preventDefault="{validateForm}">
     <div class="input-container">
       <input class:invalid={errors.name} type="text" name="name" id="name" placeholder="Name"
       aria-label="Name" aria-invalid="false" aria-describedby="error-name" bind:value={values.name}>
       {#if errors.name}
-        <p id="error-name" class="error error--input" transition:fade>{errorMsgs.name}</p>
+        <p id="error-name" class="error error--input" aria-live="polite" transition:fade>{errorMsgs.name}</p>
       {/if}
     </div>
     <div class="input-container">
       <input class:invalid={errors.email} type="email" name="email" id="email" placeholder="Email"
       aria-label="Email address" aria-invalid="false" aria-describedby="error-email" bind:value={values.email}>
       {#if errors.email}
-        <p id="error-email" class="error error--input" transition:fade>{errorMsgs.email}</p>
+        <p id="error-email" class="error error--input" aria-live="polite" transition:fade>{errorMsgs.email}</p>
       {/if}
     </div>
     <fieldset>
       <div class="legend-container">
         <legend class:invalid={errors.date}>Pick a date</legend>
         {#if errors.date}
-          <p id="error-date" class="error error--pick" transition:fade>{errorMsgs.date}</p>
+          <p id="error-date" class="error error--pick" aria-live="polite" transition:fade>{errorMsgs.date}</p>
         {/if}
       </div>
       <div class="pick-container" id="date">
-        <input class:invalid={errors.date} type="number" name="month" id="month" min="01" max="12" placeholder="MM" bind:value={values.month}>
-        <input class:invalid={errors.date} type="number" name="day" id="day" min="01" max="31" placeholder="DD" bind:value={values.day}>
-        <input class:invalid={errors.date} type="number" name="year" id="year" min="2022" max="2025" placeholder="YYYY" bind:value={values.year}>
+        <input class:invalid={errors.date} type="number" name="month" id="month" min="01" max="12" placeholder="MM" bind:value={values.month} aria-describedby="error-date">
+        <input class:invalid={errors.date} type="number" name="day" id="day" min="01" max="31" placeholder="DD" bind:value={values.day} aria-describedby="error-date">
+        <input class:invalid={errors.date} type="number" name="year" id="year" min="2022" max="2025" placeholder="YYYY" bind:value={values.year} aria-describedby="error-date">
       </div>
     </fieldset>
     <fieldset>
       <div class="legend-container">
         <legend class:invalid={errors.time}>Pick a time</legend>
         {#if errors.time}
-         <p id="error-time" class="error error--pick">{errorMsgs.time}</p>
+         <p id="error-time" class="error error--pick" aria-live="polite" transition:fade>{errorMsgs.time}</p>
         {/if}
       </div>
       <div class="pick-container">
-        <input class:invalid={errors.time} type="number" name="hour" id="hour" min="01" max="12" placeholder="09" bind:value={values.hour}>
-        <input class:invalid={errors.time} type="number" name="minute" id="minute" min="00" max="59" placeholder="00" bind:value={values.minute}>
-        <select bind:value={values.selected} class:invalid={errors.time}>
+        <input class:invalid={errors.time} type="number" name="hour" id="hour" min="01" max="12" placeholder="09" bind:value={values.hour} aria-describedby="error-time">
+        <input class:invalid={errors.time} type="number" name="minute" id="minute" min="00" max="59" placeholder="00" bind:value={values.minute} aria-describedby="error-time">
+        <select bind:value={values.selected} class:invalid={errors.time} aria-describedby="error-time">
           <option value="AM">AM</option>
           <option value="PM">PM</option>
         </select>
       </div>
     </fieldset>
     <NumPeople/>
-    <button class="submit" type="submit" >Make Reservation</button>
+    <button class="submit" type="submit">Make Reservation</button>
   </form>
 
 <style>
@@ -214,7 +226,7 @@ const validateForm = () => {
     background-repeat: no-repeat;
     background-position-x: 3.375rem;
     background-position-y: 0.5rem;
-    padding: 0 0 1rem 12px;
+    padding: 0 0 1rem 0.75rem;
   }
 
   option {
@@ -320,8 +332,11 @@ const validateForm = () => {
       grid-template-columns: repeat(2, minmax(min-content, 5rem)) 1fr;
     }
 
-    select {
+    select, #year {
       width: 6.0625rem;
+    }
+
+    select {
       background-position-x: 4rem;
     }
   }

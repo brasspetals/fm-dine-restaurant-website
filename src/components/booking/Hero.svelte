@@ -14,7 +14,7 @@
       <h1>Reservations</h1>
       <p>We can’t wait to host you. If you have any special requirements please feel free to call on the phone number below. We’ll be happy to accommodate you.</p>
       {#if width < 600}
-        <Button href="#" text="Reserve Place"/>
+        <Button href="#form" text="Reserve Place"/>
       {/if}
     </div>
   </div>

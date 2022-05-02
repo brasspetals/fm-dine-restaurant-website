@@ -58,7 +58,7 @@
       background-image: image-set(
         url("/images/homepage/hero-bg-tablet.jpg") 1x,
         url("/images/homepage/hero-bg-tablet@2x.jpg") 2x);
-      padding: max(374px, 48.7%) 1.5rem 13.5rem;
+      padding: max(23.375rem, 48.7%) 1.5rem 13.5rem;
     }
 
     p { 
