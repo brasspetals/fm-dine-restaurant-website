@@ -124,14 +124,14 @@ const validateForm = () => {
   <form action="#" id="form" class="form shadow" on:submit|preventDefault="{validateForm}">
     <div class="input-container">
       <input class:invalid={errors.name} type="text" name="name" id="name" placeholder="Name"
-      aria-label="Name" aria-invalid="false" aria-describedby="error-name" bind:value={values.name}>
+      aria-label="Name" aria-invalid="false" aria-errormessage="error-name" bind:value={values.name}>
       {#if errors.name}
         <p id="error-name" class="error error--input" aria-live="polite" transition:fade>{errorMsgs.name}</p>
       {/if}
     </div>
     <div class="input-container">
       <input class:invalid={errors.email} type="email" name="email" id="email" placeholder="Email"
-      aria-label="Email address" aria-invalid="false" aria-describedby="error-email" bind:value={values.email}>
+      aria-label="Email address" aria-invalid="false" aria-errormessage="error-email" bind:value={values.email}>
       {#if errors.email}
         <p id="error-email" class="error error--input" aria-live="polite" transition:fade>{errorMsgs.email}</p>
       {/if}
@@ -144,9 +144,9 @@ const validateForm = () => {
         {/if}
       </div>
       <div class="pick-container" id="date">
-        <input class:invalid={errors.date} type="number" name="month" id="month" min="01" max="12" placeholder="MM" bind:value={values.month} aria-describedby="error-date">
-        <input class:invalid={errors.date} type="number" name="day" id="day" min="01" max="31" placeholder="DD" bind:value={values.day} aria-describedby="error-date">
-        <input class:invalid={errors.date} type="number" name="year" id="year" min="2022" max="2025" placeholder="YYYY" bind:value={values.year} aria-describedby="error-date">
+        <input class:invalid={errors.date} type="number" name="month" id="month" min="01" max="12" placeholder="MM" bind:value={values.month} aria-errormessage="error-date">
+        <input class:invalid={errors.date} type="number" name="day" id="day" min="01" max="31" placeholder="DD" bind:value={values.day} aria-errormessage="error-date">
+        <input class:invalid={errors.date} type="number" name="year" id="year" min="2022" max="2025" placeholder="YYYY" bind:value={values.year} aria-errormessage="error-date">
       </div>
     </fieldset>
     <fieldset>
@@ -157,9 +157,9 @@ const validateForm = () => {
         {/if}
       </div>
       <div class="pick-container">
-        <input class:invalid={errors.time} type="number" name="hour" id="hour" min="01" max="12" placeholder="09" bind:value={values.hour} aria-describedby="error-time">
-        <input class:invalid={errors.time} type="number" name="minute" id="minute" min="00" max="59" placeholder="00" bind:value={values.minute} aria-describedby="error-time">
-        <select bind:value={values.selected} class:invalid={errors.time} aria-describedby="error-time">
+        <input class:invalid={errors.time} type="number" name="hour" id="hour" min="01" max="12" placeholder="09" bind:value={values.hour} aria-errormessage="error-time">
+        <input class:invalid={errors.time} type="number" name="minute" id="minute" min="00" max="59" placeholder="00" bind:value={values.minute} aria-errormessage="error-time">
+        <select bind:value={values.selected} class:invalid={errors.time} aria-errormessage="error-time">
           <option value="AM">AM</option>
           <option value="PM">PM</option>
         </select>

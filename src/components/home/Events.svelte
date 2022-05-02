@@ -56,13 +56,13 @@
     <div class="events-text-container">
       <div class="events__tabs">
         {#if $reducedMotion}
-          <button id="family" class="tab" class:active="{activeItem === 'family'}" on:click="{() => activeItem = 'family'}">Family Gathering</button>
-          <button id="special" class="tab" class:active="{activeItem === 'special'}" on:click="{() => activeItem = 'special'}">Special Events</button>
-          <button id="social" class="tab" class:active="{activeItem === 'social'}" on:click="{() => activeItem = 'social'}">Social Events</button>
+          <button id="family" class="tab" class:active="{activeItem === 'family'}" on:click="{() => activeItem = 'family'}" aria-selected="{activeItem === 'family'}">Family Gathering</button>
+          <button id="special" class="tab" class:active="{activeItem === 'special'}" on:click="{() => activeItem = 'special'}" aria-selected="{activeItem === 'special'}">Special Events</button>
+          <button id="social" class="tab" class:active="{activeItem === 'social'}" on:click="{() => activeItem = 'social'}" aria-selected="{activeItem === 'social'}">Social Events</button>
         {:else}
-          <button id="family" class="tab" class:active="{activeTab === 'family'}" on:click="{selectEvent}">Family Gathering</button>
-          <button id="special" class="tab" class:active="{activeTab === 'special'}" on:click="{selectEvent}">Special Events</button>
-          <button id="social" class="tab" class:active="{activeTab === 'social'}" on:click="{selectEvent}">Social Events</button>
+          <button id="family" class="tab" class:active="{activeTab === 'family'}" on:click="{selectEvent}" aria-selected="{activeTab === 'family'}">Family Gathering</button>
+          <button id="special" class="tab" class:active="{activeTab === 'special'}" on:click="{selectEvent}" aria-selected="{activeTab === 'special'}">Special Events</button>
+          <button id="social" class="tab" class:active="{activeTab === 'social'}" on:click="{selectEvent}" aria-selected="{activeTab === 'social'}">Social Events</button>
         {/if}
       </div>
       <div class="events__text">
