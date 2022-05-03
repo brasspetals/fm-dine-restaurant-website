@@ -65,7 +65,7 @@
           <button id="social" class="tab" class:active="{activeTab === 'social'}" on:click="{selectEvent}" aria-selected="{activeTab === 'social'}">Social Events</button>
         {/if}
       </div>
-      <div class="events__text">
+      <div class="events__text" aria-live="polite">
           <h2 class:fadeout class:fadein>{events[activeItem].type}</h2>
           <p class:fadeout class:fadein>{events[activeItem].description}</p>
           <Button black=true/>
