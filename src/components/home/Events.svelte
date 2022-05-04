@@ -9,17 +9,14 @@
   let activeTab = 'family'
   let fadeout = false
   let fadein = false
-  let hidden = false
 
   const selectEvent = function () {
     if (activeItem != this.id) {
       activeTab = this.id
       fadeout = true
       fadein = false
-      hidden = true
       setTimeout(() => {
         activeItem = this.id
-        hidden = false
         fadein = true
         fadeout = false
       }, 450);
@@ -33,15 +30,37 @@
     <div class="events-content-container">
     <div class="events__img">
       <div class="pattern-wrapper">
-        <picture>
-          <source media="(min-width: 71.875rem)" srcset={events[activeItem].desktopSrcset}>
-          <source media="(min-width: 37.5rem)" srcset={events[activeItem].tabletSrcset}>
+        <picture class:hide="{activeItem != 'family'}">
+          <source media="(min-width: 71.875rem)" srcset={events["family"].desktopSrcset}>
+          <source media="(min-width: 37.5rem)" srcset={events["family"].tabletSrcset}>
           {#if $reducedMotion || width < 600}
-            <img class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="" class:fadeout class:fadein class:hidden>
+            <img class="lg-img shadow" src={events["family"].src} srcset={events["family"].mobileSrcset} alt="" class:fadeout class:fadein>
           {:else if width < 1150}
-            <img style="transform: translate(0,{(-y + 3200) / 15}px)" class="lg-img shadow" src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="" class:fadeout class:fadein class:hidden>
+            <img style="transform: translate(0,{(-y + 3200) / 15}px)" class="lg-img shadow" src={events["family"].src} srcset={events["family"].mobileSrcset} alt="" class:fadeout class:fadein>
           {:else}
-            <img style="transform: translate(0,{(-y + 3100) / 13}px)" class="lg-img shadow" class:fadeout class:fadein class:hidden src={events[activeItem].src} srcset={events[activeItem].mobileSrcset} alt="">
+            <img style="transform: translate(0,{(-y + 3100) / 13}px)" class="lg-img shadow" class:fadeout class:fadein src={events["family"].src} srcset={events["family"].mobileSrcset} alt="">
+          {/if}
+        </picture>
+        <picture class:hide="{activeItem != 'special'}">
+          <source media="(min-width: 71.875rem)" srcset={events["special"].desktopSrcset}>
+          <source media="(min-width: 37.5rem)" srcset={events["special"].tabletSrcset}>
+          {#if $reducedMotion || width < 600}
+            <img class="lg-img shadow" src={events["special"].src} srcset={events["special"].mobileSrcset} alt="" class:fadeout class:fadein>
+          {:else if width < 1150}
+            <img style="transform: translate(0,{(-y + 3200) / 15}px)" class="lg-img shadow" src={events["special"].src} srcset={events["special"].mobileSrcset} alt="" class:fadeout class:fadein>
+          {:else}
+            <img style="transform: translate(0,{(-y + 3100) / 13}px)" class="lg-img shadow" class:fadeout class:fadein src={events["special"].src} srcset={events["special"].mobileSrcset} alt="">
+          {/if}
+        </picture>
+        <picture class:hide="{activeItem != 'social'}">
+          <source media="(min-width: 71.875rem)" srcset={events["social"].desktopSrcset}>
+          <source media="(min-width: 37.5rem)" srcset={events["social"].tabletSrcset}>
+          {#if $reducedMotion || width < 600}
+            <img class="lg-img shadow" src={events["social"].src} srcset={events["social"].mobileSrcset} alt="" class:fadeout class:fadein>
+          {:else if width < 1150}
+            <img style="transform: translate(0,{(-y + 3200) / 15}px)" class="lg-img shadow" src={events["social"].src} srcset={events["social"].mobileSrcset} alt="" class:fadeout class:fadein>
+          {:else}
+            <img style="transform: translate(0,{(-y + 3100) / 13}px)" class="lg-img shadow" class:fadeout class:fadein src={events["social"].src} srcset={events["social"].mobileSrcset} alt="">
           {/if}
         </picture>
         {#if $reducedMotion || width < 600}
@@ -53,7 +72,7 @@
         {/if}
       </div>
     </div>
-    <div class="events-text-container">
+    <div class="tab-text-wrapper">
       <div class="events__tabs">
         {#if $reducedMotion}
           <button id="family" class="tab" class:active="{activeItem === 'family'}" on:click="{() => activeItem = 'family'}" aria-selected="{activeItem === 'family'}">Family Gathering</button>
@@ -66,26 +85,36 @@
         {/if}
       </div>
       <div class="events__text" aria-live="polite">
-          <h2 class:fadeout class:fadein>{events[activeItem].type}</h2>
-          <p class:fadeout class:fadein>{events[activeItem].description}</p>
-          <Button black=true/>
+        <div class="text-wrapper" class:hide="{activeItem != 'family'}" class:fadeout class:fadein>
+          <h2>{events['family'].type}</h2>
+          <p>{events['family'].description}</p>
+        </div>
+        <div class="text-wrapper" class:hide="{activeItem != 'special'}" class:fadeout class:fadein>
+          <h2>{events['special'].type}</h2>
+          <p>{events['special'].description}</p>
+        </div>
+        <div class="text-wrapper" class:hide="{activeItem != 'social'}" class:fadeout class:fadein>
+          <h2>{events['social'].type}</h2>
+          <p>{events['social'].description}</p>
+        </div>
+        <Button black=true/>
       </div>
-      </div>
+      
+    </div>
   </div>
 </section>
 
 <style>
+  .hide {
+    display: none;
+  }
+
   .fadeout {
     animation: fadeOut .45s ease-out;
   }
 
   .fadein {
-    animation: fadeIn .45s ease-in backwards;
-    animation-delay: .2s;
-  }
-
-  .hidden {
-    opacity: 0;
+    animation: fadeIn .45s .2s ease-in backwards;
   }
 
   .events {
@@ -109,7 +138,7 @@
     display: none;
   }
 
-  .events-text-container {
+  .tab-text-wrapper {
     display: grid;
     width: 100%;
     justify-items: center;
@@ -173,6 +202,7 @@
 
   h2 {
     text-transform: capitalize;
+    margin-bottom: 1rem;
   }
 
   p {
@@ -242,7 +272,7 @@
       left: -2.5rem;
     }
 
-    .events-text-container {
+    .tab-text-wrapper {
       max-width: 27.75rem;
       align-content: start;
       gap: 0.8125rem;
