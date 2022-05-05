@@ -25,7 +25,5 @@
 <style>
   .container {
 	 overflow-x: hidden;
-	 margin: 0 auto;
-	 max-width: 93.75rem;
  }
 </style>
