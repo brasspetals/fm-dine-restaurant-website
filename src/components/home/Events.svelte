@@ -8,17 +8,17 @@
   let activeItem = 'family'
   let activeTab = 'family'
   let fadeout = false
-  let fadein = false
+  let fadein = true
 
   const selectEvent = function () {
     if (activeItem != this.id) {
       activeTab = this.id
+      fadein = false;
       fadeout = true
-      fadein = false
       setTimeout(() => {
         activeItem = this.id
-        fadein = true
         fadeout = false
+        fadein = true
       }, 450);
     }  
   }
@@ -30,37 +30,37 @@
     <div class="events-content-container">
     <div class="events__img">
       <div class="pattern-wrapper">
-        <picture class:hide="{activeItem != 'family'}">
+        <picture>
           <source media="(min-width: 71.875rem)" srcset={events["family"].desktopSrcset}>
           <source media="(min-width: 37.5rem)" srcset={events["family"].tabletSrcset}>
           {#if $reducedMotion || width < 600}
-            <img class="lg-img shadow" src={events["family"].src} srcset={events["family"].mobileSrcset} alt="" class:fadeout class:fadein>
+            <img class="lg-img shadow" src={events["family"].src} srcset={events["family"].mobileSrcset} alt="" class:fadeout class:fadein class:hide="{activeItem != 'family'}">
           {:else if width < 1150}
-            <img style="transform: translate(0,{(-y + 3200) / 15}px)" class="lg-img shadow" src={events["family"].src} srcset={events["family"].mobileSrcset} alt="" class:fadeout class:fadein>
+            <img style="transform: translate(0,{(-y + 3200) / 15}px)" class="lg-img shadow" src={events["family"].src} srcset={events["family"].mobileSrcset} alt="" class:fadeout class:fadein class:hide="{activeItem != 'family'}">
           {:else}
-            <img style="transform: translate(0,{(-y + 3100) / 13}px)" class="lg-img shadow" class:fadeout class:fadein src={events["family"].src} srcset={events["family"].mobileSrcset} alt="">
+            <img style="transform: translate(0,{(-y + 3100) / 13}px)" class="lg-img shadow" class:fadeout class:fadein src={events["family"].src} srcset={events["family"].mobileSrcset} alt="" class:hide="{activeItem != 'family'}">
           {/if}
         </picture>
-        <picture class:hide="{activeItem != 'special'}">
+        <picture>
           <source media="(min-width: 71.875rem)" srcset={events["special"].desktopSrcset}>
           <source media="(min-width: 37.5rem)" srcset={events["special"].tabletSrcset}>
           {#if $reducedMotion || width < 600}
-            <img class="lg-img shadow" src={events["special"].src} srcset={events["special"].mobileSrcset} alt="" class:fadeout class:fadein>
+            <img class="lg-img shadow" src={events["special"].src} srcset={events["special"].mobileSrcset} alt="" class:fadeout class:fadein class:hide="{activeItem != 'special'}">
           {:else if width < 1150}
-            <img style="transform: translate(0,{(-y + 3200) / 15}px)" class="lg-img shadow" src={events["special"].src} srcset={events["special"].mobileSrcset} alt="" class:fadeout class:fadein>
+            <img style="transform: translate(0,{(-y + 3200) / 15}px)" class="lg-img shadow" src={events["special"].src} srcset={events["special"].mobileSrcset} alt="" class:fadeout class:fadein class:hide="{activeItem != 'special'}">
           {:else}
-            <img style="transform: translate(0,{(-y + 3100) / 13}px)" class="lg-img shadow" class:fadeout class:fadein src={events["special"].src} srcset={events["special"].mobileSrcset} alt="">
+            <img style="transform: translate(0,{(-y + 3100) / 13}px)" class="lg-img shadow" class:fadeout class:fadein src={events["special"].src} srcset={events["special"].mobileSrcset} alt="" class:hide="{activeItem != 'special'}">
           {/if}
         </picture>
-        <picture class:hide="{activeItem != 'social'}">
+        <picture>
           <source media="(min-width: 71.875rem)" srcset={events["social"].desktopSrcset}>
           <source media="(min-width: 37.5rem)" srcset={events["social"].tabletSrcset}>
           {#if $reducedMotion || width < 600}
-            <img class="lg-img shadow" src={events["social"].src} srcset={events["social"].mobileSrcset} alt="" class:fadeout class:fadein>
+            <img class="lg-img shadow" src={events["social"].src} srcset={events["social"].mobileSrcset} alt="" class:fadeout class:fadein class:hide="{activeItem != 'social'}">
           {:else if width < 1150}
-            <img style="transform: translate(0,{(-y + 3200) / 15}px)" class="lg-img shadow" src={events["social"].src} srcset={events["social"].mobileSrcset} alt="" class:fadeout class:fadein>
+            <img style="transform: translate(0,{(-y + 3200) / 15}px)" class="lg-img shadow" src={events["social"].src} srcset={events["social"].mobileSrcset} alt="" class:fadeout class:fadein class:hide="{activeItem != 'social'}">
           {:else}
-            <img style="transform: translate(0,{(-y + 3100) / 13}px)" class="lg-img shadow" class:fadeout class:fadein src={events["social"].src} srcset={events["social"].mobileSrcset} alt="">
+            <img style="transform: translate(0,{(-y + 3100) / 13}px)" class="lg-img shadow" class:fadeout class:fadein src={events["social"].src} srcset={events["social"].mobileSrcset} alt="" class:hide="{activeItem != 'social'}">
           {/if}
         </picture>
         {#if $reducedMotion || width < 600}
@@ -110,7 +110,7 @@
   }
 
   .fadeout {
-    animation: fadeOut .45s ease-out;
+    animation: fadeOut .45s ease-out forwards;
   }
 
   .fadein {
